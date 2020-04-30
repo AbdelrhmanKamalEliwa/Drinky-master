@@ -13,6 +13,8 @@
 		C28CF217245A4D7A0016D326 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28CF216245A4D7A0016D326 /* LoginViewController.swift */; };
 		C2C821FC24594023006C1776 /* SliderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C821FA24594023006C1776 /* SliderImageViewCell.swift */; };
 		C2C821FD24594023006C1776 /* SliderImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C821FB24594023006C1776 /* SliderImageViewCell.xib */; };
+		C2E23A53245AD38E00FA4F86 /* DrinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */; };
+		C2E23A56245AD52300FA4F86 /* Menu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2E23A55245AD52300FA4F86 /* Menu.xcassets */; };
 		C2F024F02458FEDF00C1A7F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F024EF2458FEDF00C1A7F7 /* AppDelegate.swift */; };
 		C2F024F22458FEDF00C1A7F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F024F12458FEDF00C1A7F7 /* SceneDelegate.swift */; };
 		C2F024F42458FEDF00C1A7F7 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F024F32458FEDF00C1A7F7 /* IntroViewController.swift */; };
@@ -32,6 +34,8 @@
 		C28CF216245A4D7A0016D326 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C2C821FA24594023006C1776 /* SliderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderImageViewCell.swift; sourceTree = "<group>"; };
 		C2C821FB24594023006C1776 /* SliderImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderImageViewCell.xib; sourceTree = "<group>"; };
+		C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksModel.swift; sourceTree = "<group>"; };
+		C2E23A55245AD52300FA4F86 /* Menu.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Menu.xcassets; sourceTree = "<group>"; };
 		C2F024EC2458FEDF00C1A7F7 /* Drinky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F024EF2458FEDF00C1A7F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F024F12458FEDF00C1A7F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,14 +69,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C28CF218245A4D940016D326 /* Registeration&LoginVC */ = {
+		C28CF218245A4D940016D326 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C28CF21A245A4E070016D326 /* IntroViewController */,
-				C28CF214245A31450016D326 /* RegisterViewController.swift */,
-				C28CF216245A4D7A0016D326 /* LoginViewController.swift */,
+				C2E23A4E245AD1F400FA4F86 /* Controller */,
+				C2E23A4D245AD1E600FA4F86 /* View */,
+				C2E23A4C245AD1D300FA4F86 /* Model */,
 			);
-			path = "Registeration&LoginVC";
+			path = Module;
 			sourceTree = "<group>";
 		};
 		C28CF219245A4DE30016D326 /* Utilities */ = {
@@ -92,6 +96,67 @@
 				C2C821FB24594023006C1776 /* SliderImageViewCell.xib */,
 			);
 			path = IntroViewController;
+			sourceTree = "<group>";
+		};
+		C2E23A4C245AD1D300FA4F86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2E23A4D245AD1E600FA4F86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C2E23A4E245AD1F400FA4F86 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C28CF21A245A4E070016D326 /* IntroViewController */,
+				C28CF214245A31450016D326 /* RegisterViewController.swift */,
+				C28CF216245A4D7A0016D326 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C2E23A4F245AD27400FA4F86 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C2E23A50245AD29300FA4F86 /* Delegates */,
+				C2E23A51245AD2BE00FA4F86 /* Storyboards */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C2E23A50245AD29300FA4F86 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				C2F024EF2458FEDF00C1A7F7 /* AppDelegate.swift */,
+				C2F024F12458FEDF00C1A7F7 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		C2E23A51245AD2BE00FA4F86 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C2F024F52458FEDF00C1A7F7 /* Main.storyboard */,
+				C2F024FA2458FEE400C1A7F7 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C2E23A54245AD4E900FA4F86 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C2F024F82458FEE400C1A7F7 /* Assets.xcassets */,
+				C2E23A55245AD52300FA4F86 /* Menu.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		C2F024E32458FEDE00C1A7F7 = {
@@ -115,13 +180,10 @@
 		C2F024EE2458FEDF00C1A7F7 /* Drinky */ = {
 			isa = PBXGroup;
 			children = (
-				C2F024EF2458FEDF00C1A7F7 /* AppDelegate.swift */,
-				C2F024F12458FEDF00C1A7F7 /* SceneDelegate.swift */,
+				C2E23A4F245AD27400FA4F86 /* Application */,
 				C28CF219245A4DE30016D326 /* Utilities */,
-				C28CF218245A4D940016D326 /* Registeration&LoginVC */,
-				C2F024F52458FEDF00C1A7F7 /* Main.storyboard */,
-				C2F024F82458FEE400C1A7F7 /* Assets.xcassets */,
-				C2F024FA2458FEE400C1A7F7 /* LaunchScreen.storyboard */,
+				C28CF218245A4D940016D326 /* Module */,
+				C2E23A54245AD4E900FA4F86 /* Assets */,
 				C2F024FD2458FEE400C1A7F7 /* Info.plist */,
 				769D367B2459BF850000AF03 /* GoogleService-Info.plist */,
 			);
@@ -198,6 +260,7 @@
 			files = (
 				C2F024FC2458FEE400C1A7F7 /* LaunchScreen.storyboard in Resources */,
 				C2C821FD24594023006C1776 /* SliderImageViewCell.xib in Resources */,
+				C2E23A56245AD52300FA4F86 /* Menu.xcassets in Resources */,
 				769D367C2459BF850000AF03 /* GoogleService-Info.plist in Resources */,
 				C2F024F92458FEE400C1A7F7 /* Assets.xcassets in Resources */,
 				C2F024F72458FEDF00C1A7F7 /* Main.storyboard in Resources */,
@@ -257,6 +320,7 @@
 				C2F024F02458FEDF00C1A7F7 /* AppDelegate.swift in Sources */,
 				C28CF215245A31450016D326 /* RegisterViewController.swift in Sources */,
 				C2F0250624590DA300C1A7F7 /* BaseVC+NavForTabBar.swift in Sources */,
+				C2E23A53245AD38E00FA4F86 /* DrinksModel.swift in Sources */,
 				C28CF217245A4D7A0016D326 /* LoginViewController.swift in Sources */,
 				C2F0250424590D9500C1A7F7 /* UIView+Extensions.swift in Sources */,
 				C2F024F22458FEDF00C1A7F7 /* SceneDelegate.swift in Sources */,

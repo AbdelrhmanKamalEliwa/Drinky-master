@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vmQ-da-uhH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rgf-Kb-mp4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -174,19 +174,19 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="1nb-Iv-lC0" customClass="LoginViewController" customModule="Drinky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thX-Ok-llz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPattern- 2" translatesAutoresizingMaskIntoConstraints="NO" id="XRs-vN-vH8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJE-ie-Spk">
-                                <rect key="frame" x="88.5" y="10" width="237.5" height="43"/>
+                                <rect key="frame" x="88.5" y="54" width="237.5" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-Ts-e4v">
-                                <rect key="frame" x="20" y="169" width="374" height="104"/>
+                                <rect key="frame" x="20" y="196" width="374" height="104"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WId-wH-6yB">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="47"/>
@@ -251,7 +251,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-z4-DII">
-                                <rect key="frame" x="28" y="273" width="122" height="30"/>
+                                <rect key="frame" x="28" y="300" width="122" height="30"/>
                                 <state key="normal" title="Forget password?">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -260,7 +260,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="150-Sx-lFL">
-                                <rect key="frame" x="28" y="343" width="358" height="50"/>
+                                <rect key="frame" x="28" y="370" width="358" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wuN-SV-j5g"/>
@@ -279,7 +279,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfF-eP-d4e">
-                                <rect key="frame" x="28" y="393" width="221" height="30"/>
+                                <rect key="frame" x="28" y="420" width="221" height="30"/>
                                 <state key="normal" title="Don't have an account? Register">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -323,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAH-EE-FJe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567" y="324"/>
+            <point key="canvasLocation" x="1567" y="329"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="eUf-PT-aEo">
@@ -510,27 +510,15 @@
                                     <action selector="registerPressed:" destination="8nn-Ck-GFw" eventType="touchUpInside" id="MYV-vU-NlW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-mB-B8i">
-                                <rect key="frame" x="28" y="548.5" width="164" height="30"/>
-                                <state key="normal" title="Have an account? Login">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="1nb-Iv-lC0" kind="show" id="eBm-OO-8rp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6iD-9x-BNP" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="28" id="0F4-sk-h2f"/>
-                            <constraint firstItem="R9a-mB-B8i" firstAttribute="top" secondItem="6iD-9x-BNP" secondAttribute="bottom" id="0Xn-tE-ANi"/>
-                            <constraint firstItem="R9a-mB-B8i" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="28" id="5ZQ-TK-4Zm"/>
                             <constraint firstItem="PIg-Ag-zhz" firstAttribute="centerY" secondItem="Cf1-1Y-J8c" secondAttribute="centerY" constant="-150" id="7xM-iR-7hs"/>
                             <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" secondItem="PIg-Ag-zhz" secondAttribute="trailing" constant="20" id="8yH-7w-hh8"/>
                             <constraint firstAttribute="bottom" secondItem="22n-O8-A2p" secondAttribute="bottom" id="DfK-4w-ZcG"/>
                             <constraint firstItem="6iD-9x-BNP" firstAttribute="top" secondItem="PIg-Ag-zhz" secondAttribute="bottom" constant="70" id="Gg6-Cw-7mT"/>
                             <constraint firstItem="PIg-Ag-zhz" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="20" id="QIL-Dr-YtD"/>
-                            <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R9a-mB-B8i" secondAttribute="trailing" symbolic="YES" id="ess-e9-20t"/>
                             <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" secondItem="6iD-9x-BNP" secondAttribute="trailing" constant="28" id="gnr-lH-t2a"/>
                             <constraint firstItem="22n-O8-A2p" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" id="goq-4T-X04"/>
                             <constraint firstItem="22n-O8-A2p" firstAttribute="top" secondItem="Cf1-1Y-J8c" secondAttribute="top" id="haF-Ob-CQK"/>
@@ -561,6 +549,31 @@
             </objects>
             <point key="canvasLocation" x="1567" y="-365"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="jK9-Fm-3bC">
+            <objects>
+                <viewController id="rgf-Kb-mp4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vkm-NC-sFz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-0B-azG">
+                                <rect key="frame" x="142" y="53" width="131" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="" image="folder.badge.person.crop" catalog="system"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="3ih-wF-cIX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgC-Zn-bdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2526" y="-48"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9UP-6C-jDd">
             <objects>
@@ -583,8 +596,6 @@
     <resources>
         <image name="backgroundPattern- 2" width="1300" height="1292"/>
         <image name="facebook" width="800" height="1540"/>
+        <image name="folder.badge.person.crop" catalog="system" width="64" height="42"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="eBm-OO-8rp"/>
-    </inferredMetricsTieBreakers>
 </document>
