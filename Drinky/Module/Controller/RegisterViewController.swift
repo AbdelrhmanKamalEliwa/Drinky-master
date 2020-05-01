@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
-    
+    let db = Firestore.firestore()
     
     @IBOutlet weak var fristNameTextField: UITextField!
     @IBOutlet weak var fristNameLabel: UILabel!
@@ -47,10 +49,47 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: Any) {
         
+        guard !fristNameTextField.text!.isEmpty,!lastNameTextField.text!.isEmpty,!emailTextField.text!.isEmpty, !passwordTextField.text!.isEmpty,!phoneNumberTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
+            return
+        }
+        
+        
+        registration()
+        
     }
     
+    func registration() {
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {
+            [weak self] (authResult, error) in
+            guard let _ = authResult?.user, error == nil else {
+                self?.presentSimpleAlert(viewController: self!, title: "Register Failure", message: error!.localizedDescription)
+                return
+            }
+            guard let currentUser = Auth.auth().currentUser else {
+                print("Faild to load current user")
+                return
+            }
+            let userId = currentUser.uid
+            
+            self?.createUserInfo(userId)
+            
+        }
+    }
+    
+    
+    func createUserInfo(_ userId: String) {
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.setData([
+            "first-name":fristNameTextField.text!,
+            "last-name":lastNameTextField.text!,
+            "email":emailTextField.text!,
+            "mobile-number":phoneNumberTextField.text!,
+            "id":newDocument.documentID
+        ])
+    }
 }
-
+// MARK: Design
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == fristNameTextField {

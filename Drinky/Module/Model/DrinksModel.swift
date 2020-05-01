@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct DrinkModel {
+    let id: String
+    let name: String
+    let type: String
+    let description: String
+    let price: [Int]
+    let rate: Int?
+    let image: String?
+}

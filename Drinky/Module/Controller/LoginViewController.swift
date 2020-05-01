@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -29,13 +31,34 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
+        
+        guard  !emailTextField.text!.isEmpty , !passwordTextField.text!.isEmpty
+            else {
+                presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
+                return
+        }
+        
+        login()
     }
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
     }
+    func login() {
+        Auth.auth().signIn(withEmail: emailTextField.text! , password: passwordTextField.text!) {
+            [weak self] (authResult, error) in
+            guard let _ = authResult, error == nil else {
+             
+                self?.presentSimpleAlert(viewController: self!, title: "Login Failure", message: error!.localizedDescription)
+                return
+            }
+            
+        }
+    }
+    
     
 }
 
+// MARK: Design
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTextField {

@@ -32,6 +32,28 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
     
+    public func presentSimpleAlert(viewController: UIViewController, title: String, message: String, completion: @escaping(_ done: Bool) -> Void = {_ in}) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            completion(true)
+        }
+        
+        alert.addAction(dismissAction)
+        
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+//    func showAlert(title: String, message: String, okTitle: String = "ok", okHandler: ((UIAlertAction)->Void)? = nil)
+//    {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//
+//        alert.addAction(UIAlertAction(title: okTitle, style: .cancel, handler: okHandler))
+//
+//        self.present(alert, animated: true, completion: nil)
+//    }
+//
 //    func setupWishlistNavItem() {
 //        if UIViewController.self != WatchlistViewController.self {
 //        let wishlistButton = UIButton(type: .custom)
