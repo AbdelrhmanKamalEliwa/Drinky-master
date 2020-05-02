@@ -48,16 +48,36 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerPressed(_ sender: Any) {
-        
-        guard !fristNameTextField.text!.isEmpty,!lastNameTextField.text!.isEmpty,!emailTextField.text!.isEmpty, !passwordTextField.text!.isEmpty,!phoneNumberTextField.text!.isEmpty else {
-            presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
+        guard !fristNameTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Register Failure",
+                               message: "First name required!")
             return
         }
-        
+        guard !lastNameTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Register Failure",
+                               message: "Last name required!")
+            return
+        }
+        guard !emailTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Register Failure",
+                               message: "Email required!")
+            return
+        }
+        guard !passwordTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Register Failure",
+                               message: "Password required!")
+            return
+        }
+        guard !phoneNumberTextField.text!.isEmpty else {
+            presentSimpleAlert(viewController: self, title: "Register Failure",
+                               message: "Phone number required!")
+            return
+        }
         
         registration()
         
     }
+    
     
     func registration() {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {
@@ -73,10 +93,13 @@ class RegisterViewController: UIViewController {
             let userId = currentUser.uid
             
             self?.createUserInfo(userId)
-            
+            self?.goToHomeVC()
         }
     }
     
+    func goToHomeVC() {
+        performSegue(withIdentifier: "goToMainApp", sender: self)
+    }
     
     func createUserInfo(_ userId: String) {
         let newDocument = db.collection("registed-user").document(userId)

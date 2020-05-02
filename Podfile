@@ -10,5 +10,9 @@ target 'Drinky' do
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
     pod 'Firebase/Auth'
+
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FBSDKLoginKit'
    
 end

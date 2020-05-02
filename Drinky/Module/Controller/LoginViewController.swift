@@ -31,8 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: Any) {
-        
-        guard  !emailTextField.text!.isEmpty , !passwordTextField.text!.isEmpty
+        guard  !emailTextField.text!.isEmpty, !passwordTextField.text!.isEmpty
             else {
                 presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
                 return
@@ -43,18 +42,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
     }
+    
+    
     func login() {
         Auth.auth().signIn(withEmail: emailTextField.text! , password: passwordTextField.text!) {
             [weak self] (authResult, error) in
             guard let _ = authResult, error == nil else {
-             
                 self?.presentSimpleAlert(viewController: self!, title: "Login Failure", message: error!.localizedDescription)
                 return
             }
-            
+            self?.goToHomeVC()
         }
     }
     
+    func goToHomeVC() {
+        performSegue(withIdentifier: "goToMain", sender: self)
+    }
     
 }
 

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FacebookCore
+import FacebookLogin
 
 class IntroViewController: UIViewController {
 
@@ -57,9 +61,50 @@ class IntroViewController: UIViewController {
     }
     
     @IBAction func loginFacebookPressed(_ sender: Any) {
-        
+        loginWithFacebook()
     }
     
+    func loginWithFacebook() {
+        let loginManager = LoginManager()
+        
+        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) {
+            [weak self] (result) in
+            switch result {
+            case .success(granted: _, declined: _, token: _):
+                self?.loginToFirestore()
+            case .cancelled:
+                print("Cancelled")
+            case .failed(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func loginToFirestore() {
+        guard let token = AccessToken.current?.tokenString else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            print("login Success")
+            
+            guard let currentUser = Auth.auth().currentUser else {
+                print("Faild to load current user")
+                return
+            }
+            
+            let _ = currentUser.uid
+            
+//            self?.createUserInfo(userId)
+            self?.goToHome()
+        }
+    }
+    
+    func goToHome() {
+        performSegue(withIdentifier: "goToHomeWithFB", sender: self)
+    }
 
 }
 
