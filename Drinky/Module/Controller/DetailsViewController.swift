@@ -27,7 +27,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func stepperAction(_ sender: Any) {
-        stepperCounter.text = String(stepper.value)
+        stepperCounter.text = String(Int(stepper.value))
     }
     
     

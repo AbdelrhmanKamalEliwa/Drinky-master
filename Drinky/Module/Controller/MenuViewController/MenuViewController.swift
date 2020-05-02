@@ -29,7 +29,7 @@ class MenuViewController: UIViewController {
         categoriesSegmentedControl.selectedSegmentIndex = 0
         sutupSegmentControlAttributes()
         setupSearchBar()
-        backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9207810495, blue: 0.8098561175, alpha: 1)
+//        backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9207810495, blue: 0.8098561175, alpha: 1)
         
     }
     
@@ -46,20 +46,21 @@ class MenuViewController: UIViewController {
     @IBAction func handleSelectedSegmentControl(_ sender: Any) {
         switch categoriesSegmentedControl.selectedSegmentIndex {
         case 0: drinksTodisplay = hotDrinks
-            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9207810495, blue: 0.8098561175, alpha: 1)
+//            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9207810495, blue: 0.8098561175, alpha: 1)
         case 1: drinksTodisplay = freshDrinks
-            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9133522299, blue: 0.9680454037, alpha: 1)
+//            backgroundView.backgroundColor = #colorLiteral(red: 1, green: 0.9133522299, blue: 0.9680454037, alpha: 1)
         case 2: drinksTodisplay = softDrinks
-            backgroundView.backgroundColor = #colorLiteral(red: 0.9074003146, green: 1, blue: 0.9103867377, alpha: 1)
+//            backgroundView.backgroundColor = #colorLiteral(red: 0.9074003146, green: 1, blue: 0.9103867377, alpha: 1)
         default: drinksTodisplay = waterDrinks
-            backgroundView.backgroundColor = #colorLiteral(red: 0.8171564551, green: 0.939322343, blue: 1, alpha: 1)
+//            backgroundView.backgroundColor = #colorLiteral(red: 0.8171564551, green: 0.939322343, blue: 1, alpha: 1)
         }
+        sutupSegmentControlAttributes()
         menuTableView.reloadData()
     }
     
     func sutupSegmentControlAttributes() {
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-        let selectedTextAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)]
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
+        let selectedTextAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
         categoriesSegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
         categoriesSegmentedControl.setTitleTextAttributes(selectedTextAttribute, for: .selected)
     }

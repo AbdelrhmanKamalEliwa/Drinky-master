@@ -86,8 +86,4 @@ extension UITabBarController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
-    
-    func setTabBarItemColor(color: UIColor) {
-        tabBar.tintColor = color
-    }
 }
