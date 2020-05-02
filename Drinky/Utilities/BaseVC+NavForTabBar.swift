@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIViewController {
-    
     func setupNavigationBar(title: String) {
         setupTitleNavItem(navTitle: title)
         setupBackButtonNavItem()
@@ -81,6 +80,14 @@ extension UIViewController {
 
 extension UITabBarController {
     func setupNavBarForTabBar(title: String) {
-        setupNavigationBar(title: title)
+//        setupNavigationBar(title: title)
+        setupTitleNavItem(navTitle: title)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    func setTabBarItemColor(color: UIColor) {
+        tabBar.tintColor = color
     }
 }
