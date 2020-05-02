@@ -582,8 +582,8 @@
                                     <constraint firstAttribute="height" constant="50" id="hT9-DC-Q8r"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Hot"/>
                                     <segment title="Fresh"/>
+                                    <segment title="Hot"/>
                                     <segment title="Soft"/>
                                     <segment title="Water"/>
                                 </segments>
@@ -597,11 +597,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bdn-ph-aol" firstAttribute="top" secondItem="3ih-wF-cIX" secondAttribute="top" constant="106" id="M3Q-Ma-pfn"/>
                             <constraint firstItem="cEG-0B-azG" firstAttribute="top" secondItem="wsz-WO-139" secondAttribute="bottom" id="MmH-Om-BML"/>
                             <constraint firstItem="cEG-0B-azG" firstAttribute="leading" secondItem="3ih-wF-cIX" secondAttribute="leading" constant="30" id="NdI-py-Fbn"/>
                             <constraint firstItem="wsz-WO-139" firstAttribute="top" secondItem="3ih-wF-cIX" secondAttribute="top" id="Rt0-aK-idT"/>
                             <constraint firstItem="wsz-WO-139" firstAttribute="trailing" secondItem="3ih-wF-cIX" secondAttribute="trailing" id="Suz-Bq-CeV"/>
-                            <constraint firstItem="bdn-ph-aol" firstAttribute="top" secondItem="cEG-0B-azG" secondAttribute="bottom" id="XzD-bQ-Cpj"/>
                             <constraint firstItem="3ih-wF-cIX" firstAttribute="trailing" secondItem="bdn-ph-aol" secondAttribute="trailing" id="YAb-Yq-Vgk"/>
                             <constraint firstItem="3ih-wF-cIX" firstAttribute="bottom" secondItem="bdn-ph-aol" secondAttribute="bottom" id="dW3-8B-BdL"/>
                             <constraint firstItem="bdn-ph-aol" firstAttribute="leading" secondItem="3ih-wF-cIX" secondAttribute="leading" id="fXA-fU-47q"/>
@@ -617,6 +617,7 @@
                         <outlet property="categoriesSegmentedControl" destination="cEG-0B-azG" id="DPa-Vn-5Xn"/>
                         <outlet property="menuSearchBar" destination="wsz-WO-139" id="40w-N5-R6h"/>
                         <outlet property="menuTableView" destination="bdn-ph-aol" id="BWJ-Mn-sKZ"/>
+                        <outlet property="menuTableViewTopConstraint" destination="M3Q-Ma-pfn" id="RBu-yl-VFM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgC-Zn-bdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -627,7 +628,7 @@
         <!--Details View Controller-->
         <scene sceneID="NyP-PH-1Qr">
             <objects>
-                <viewController id="bIo-1D-jY3" customClass="DetailsViewController" customModule="Drinky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="bIo-1D-jY3" customClass="DetailsViewController" customModule="Drinky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sNK-c4-wUC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -711,6 +712,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" image="icons8-coffee-to-go-50"/>
+                                                        <connections>
+                                                            <action selector="smallSizeButtonTapped:" destination="bIo-1D-jY3" eventType="touchUpInside" id="lL2-2C-vEC"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxi-gX-NcQ">
                                                         <rect key="frame" x="55" y="10" width="35" height="40"/>
@@ -719,6 +723,9 @@
                                                             <constraint firstAttribute="width" constant="35" id="ywE-jb-3wz"/>
                                                         </constraints>
                                                         <state key="normal" image="icons8-coffee-to-go-50"/>
+                                                        <connections>
+                                                            <action selector="mediumSizeButtonTapped:" destination="bIo-1D-jY3" eventType="touchUpInside" id="4jN-sq-oFL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-I4-jci">
                                                         <rect key="frame" x="115" y="0.0" width="40" height="50"/>
@@ -727,6 +734,9 @@
                                                             <constraint firstAttribute="height" constant="50" id="q4H-dl-QC6"/>
                                                         </constraints>
                                                         <state key="normal" image="icons8-coffee-to-go-50"/>
+                                                        <connections>
+                                                            <action selector="largeSizeButtonTapped:" destination="bIo-1D-jY3" eventType="touchUpInside" id="BTe-xT-62S"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -864,6 +874,9 @@
                                 <state key="normal" image="heart.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToFavoriteTapped:" destination="bIo-1D-jY3" eventType="touchUpInside" id="eWN-BL-w4l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -897,6 +910,7 @@
                     </view>
                     <connections>
                         <outlet property="cupImage" destination="kyr-Rg-d5n" id="Yvn-qo-phn"/>
+                        <outlet property="drinkDescription" destination="Ds3-EN-UJW" id="1ZR-T8-UeS"/>
                         <outlet property="drinkName" destination="BQL-Xd-sjD" id="MIX-ia-Kab"/>
                         <outlet property="drinkPrice" destination="Y94-WS-Pqf" id="XUU-0m-C8c"/>
                         <outlet property="stepper" destination="0nn-GZ-i9q" id="uDQ-Fy-Zvj"/>

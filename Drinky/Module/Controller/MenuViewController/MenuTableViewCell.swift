@@ -10,15 +10,19 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cupImage: UIImageView!
-    @IBOutlet weak var cupNameLabel: UILabel!
+    @IBOutlet private weak var cupImage: UIImageView!
+    @IBOutlet private weak var cupNameLabel: UILabel!
     
-    var cupName: String! {
-        didSet {
-            cupNameLabel.text = cupName
-        }
+//    var cupName: String! {
+//        didSet {
+//            cupNameLabel.text = cupName
+//        }
+//    }
+    
+    func displayData(drinkName: String, drinkImage: String?) {
+        cupNameLabel.text = drinkName
+        cupImage.image = UIImage(named: drinkImage ?? "error-image")
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
