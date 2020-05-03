@@ -13,7 +13,8 @@ import FacebookCore
 import FacebookLogin
 
 class IntroViewController: UIViewController {
-
+    
+    let db = Firestore.firestore()
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var pagingDots: UIPageControl!
     @IBOutlet weak var registerbutton: UIButton!
@@ -85,21 +86,51 @@ class IntroViewController: UIViewController {
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
         Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
             if let error = error {
-                print(error.localizedDescription)
+                self?.presentSimpleAlert(viewController: self!, title: "Login Failure", message: error.localizedDescription)
                 return
             }
-            print("login Success")
-            
-            guard let currentUser = Auth.auth().currentUser else {
-                print("Faild to load current user")
-                return
-            }
-            
-            let _ = currentUser.uid
-            
-//            self?.createUserInfo(userId)
+            self?.getFBUserData()
             self?.goToHome()
         }
+    }
+    
+    
+    func getFBUserData() {
+        guard AccessToken.current != nil else {
+            presentSimpleAlert(viewController: self, title: "Error", message: "Login Failure")
+            return
+        }
+        
+        let graphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name"])
+        graphRequest.start(completionHandler: { [weak self] (connection, result, error) -> Void in
+            guard error == nil else {
+                self?.presentSimpleAlert(viewController: self!, title: "Login Failure", message: error!.localizedDescription)
+                return
+            }
+            guard let result = result else {
+                self?.presentSimpleAlert(viewController: self!, title: "Login Failure", message: "Failed to load data")
+                return
+            }
+            let dict = result as! [String : AnyObject]
+            let data = dict as NSDictionary
+            let id = data.object(forKey: "id") as! String
+            let firstName = data.object(forKey: "first_name") as! String
+            let lastName = data.object(forKey: "last_name") as! String
+            let email = data.object(forKey: "email") as! String
+            self?.createUserInfo(id, firstName, lastName, email)
+        })
+        
+    }
+    
+    func createUserInfo(_ userId: String, _ firstName: String, _ lastName: String, _ email: String) {
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.setData([
+            "first-name":firstName,
+            "last-name":lastName,
+            "email":email,
+            "mobile-number":"",
+            "id":userId
+        ])
     }
     
     func goToHome() {
