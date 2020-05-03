@@ -52,6 +52,7 @@ class MenuViewController: UIViewController {
     func setupSearchBar() {
         menuSearchBar.searchBarStyle = .minimal
         menuSearchBar.searchTextField.delegate = self
+        menuSearchBar.delegate = self
     }
     
     @IBAction func handleSelectedSegmentControl(_ sender: Any) {
@@ -180,6 +181,7 @@ extension MenuViewController: UISearchBarDelegate {
 extension MenuViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        return false
     }
 }
 
@@ -292,7 +294,8 @@ extension MenuViewController {
     }
     
     func searchOnDrink(drink: String) {
-//        db.collection("drinks").whereField(<#T##field: String##String#>, isGreaterThanOrEqualTo: <#T##Any#>)
+//        db.collection("drinks").whereField(
+//        let myPredicate = NSPredicate(format: "name contains[c] '\(drink)'")
         db.collection("drinks").whereField("name", isEqualTo: drink).getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -316,6 +319,7 @@ extension MenuViewController {
                 
             }
         }
+        filteredDrinks.removeAll()
     }
     
 }

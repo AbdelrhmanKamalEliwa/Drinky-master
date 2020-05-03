@@ -10,17 +10,25 @@ import UIKit
 
 class CartItemCell: UITableViewCell {
     
-    @IBOutlet weak var cellBackgroundView: UIView!
-    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var cupImage: UIImageView!
-    @IBOutlet weak var cupNameLabel: UILabel!
-    @IBOutlet weak var sizeLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet private weak var cellBackgroundView: UIView!
+    @IBOutlet private weak var quantityLabel: UILabel!
+    @IBOutlet private weak var cupImage: UIImageView!
+    @IBOutlet private weak var cupNameLabel: UILabel!
+    @IBOutlet private weak var sizeLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
     
-    var name: String! {
-        didSet {
-            cupNameLabel.text = name
-        }
+//    var name: String! {
+//        didSet {
+//            cupNameLabel.text = name
+//        }
+//    }
+    
+    func displayData(_ name: String, _ size: String, _ price: String, _ quantity: String, _ image: String?) {
+        cupNameLabel.text = name
+        sizeLabel.text = size
+        priceLabel.text = price
+        quantityLabel.text = quantity
+        cupImage.image = UIImage(named: image ?? "error-image")
     }
     
     override func awakeFromNib() {

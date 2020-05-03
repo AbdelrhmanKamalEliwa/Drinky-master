@@ -31,6 +31,7 @@
 		C2F024FC2458FEE400C1A7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F024FA2458FEE400C1A7F7 /* LaunchScreen.storyboard */; };
 		C2F0250424590D9500C1A7F7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0250324590D9500C1A7F7 /* UIView+Extensions.swift */; };
 		C2F0250624590DA300C1A7F7 /* BaseVC+NavForTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0250524590DA200C1A7F7 /* BaseVC+NavForTabBar.swift */; };
+		F4817869245F233F00A3D86E /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4817868245F233F00A3D86E /* OrderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C2F024FD2458FEE400C1A7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2F0250324590D9500C1A7F7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C2F0250524590DA200C1A7F7 /* BaseVC+NavForTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseVC+NavForTabBar.swift"; sourceTree = "<group>"; };
+		F4817868245F233F00A3D86E /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */,
+				F4817868245F233F00A3D86E /* OrderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				C2F024F02458FEDF00C1A7F7 /* AppDelegate.swift in Sources */,
 				C28CF215245A31450016D326 /* RegisterViewController.swift in Sources */,
 				C2F0250624590DA300C1A7F7 /* BaseVC+NavForTabBar.swift in Sources */,
+				F4817869245F233F00A3D86E /* OrderModel.swift in Sources */,
 				C2E23A53245AD38E00FA4F86 /* DrinksModel.swift in Sources */,
 				C28CF217245A4D7A0016D326 /* LoginViewController.swift in Sources */,
 				C2F0250424590D9500C1A7F7 /* UIView+Extensions.swift in Sources */,

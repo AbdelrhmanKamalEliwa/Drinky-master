@@ -22,6 +22,8 @@ class DetailsViewController: UIViewController {
     fileprivate let db = Firestore.firestore()
     fileprivate var drink: DrinkModel?
     fileprivate var price = 0
+    fileprivate var size = ""
+    fileprivate var suger = 0
     var drinkId = ""
     
     override func viewDidLoad() {
@@ -29,6 +31,7 @@ class DetailsViewController: UIViewController {
         setupNavigationBar(title: "Preferences")
         getDrink(drindId: drinkId)
     }
+    
     
     @IBAction private func chooseCupSizePressed(_ sender: UIButton) {
         let allButtonTags = [1, 2, 3]
@@ -49,6 +52,7 @@ class DetailsViewController: UIViewController {
             }
             drinkPrice.text = "\(drink!.price[0]) EGP"
             price = drink!.price[0]
+            size = "S"
             
         } else if sender.tag == 2 {
             if drink!.price.count == 1 {
@@ -57,6 +61,7 @@ class DetailsViewController: UIViewController {
             }
             drinkPrice.text = "\(drink!.price[1]) EGP"
             price = drink!.price[1]
+            size = "M"
             
         } else if sender.tag == 3 {
             if drink!.price.count == 2 || drink!.price.count == 1 {
@@ -65,6 +70,7 @@ class DetailsViewController: UIViewController {
             }
             drinkPrice.text = "\(drink!.price[2]) EGP"
             price = drink!.price[2]
+            size = "L"
         }
         
         displayTotalPrice()
@@ -72,6 +78,15 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func chooseSugerPressed(_ sender: UIButton) {
+        if sender.tag == 1 {
+            suger = 0
+        } else if sender.tag == 2 {
+            suger = 1
+        } else if sender.tag == 3 {
+            suger = 2
+        } else if sender.tag == 4 {
+            suger = 3
+        }
     }
     
     @IBAction func stepperAction(_ sender: Any) {
@@ -90,6 +105,13 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: Any) {
+        fetchOrder(size, String(suger), String(stepper.value), String(price * Int(stepper.value)))
+        let alert = UIAlertController(title: "Success", message: "Your order added to Cart", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func displayData(_ drinkImage: String?, _ name: String, _ description: String, _ price: [Int]) {
@@ -128,4 +150,40 @@ class DetailsViewController: UIViewController {
             }
         }
     }
+    
+    
+    func fetchOrder(_ size: String, _ suger: String, _ quantity: String, _ totalprice: String) {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        guard let drink = drink else {
+            print("Faild to load drink id")
+            return
+        }
+        
+        guard let image = drink.image else {
+            return
+        }
+        
+        let newDocument = db.collection("orders").document()
+        newDocument.setData([
+            "user-id": userId,
+            "drink-id":drink.id,
+            "order-id": newDocument.documentID,
+            "drink-name": drink.name,
+            "drink-image": image,
+            "size": size,
+            "suger": suger,
+            "quantity": quantity,
+            "total-price": totalprice
+        ])
+
+    }
+    
 }
+
+
+

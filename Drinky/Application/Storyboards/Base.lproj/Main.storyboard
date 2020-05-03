@@ -754,7 +754,7 @@
                                                             <constraint firstAttribute="width" constant="35" id="c8Y-vr-dPS"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" image="Espresso"/>
+                                                        <state key="normal" image="suger-0"/>
                                                         <connections>
                                                             <action selector="chooseSugerPressed:" destination="bIo-1D-jY3" eventType="touchUpInside" id="lTK-FP-kCM"/>
                                                         </connections>
@@ -766,7 +766,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="fyq-EN-x8K"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" image="macciato"/>
+                                                        <state key="normal" image="suger-1"/>
                                                         <connections>
                                                             <action selector="chooseSugerPressed:" destination="bIo-1D-jY3" eventType="touchUpInside" id="dZA-mw-neC"/>
                                                         </connections>
@@ -778,7 +778,7 @@
                                                             <constraint firstAttribute="width" constant="35" id="gyR-Uw-HsL"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" image="macciato"/>
+                                                        <state key="normal" image="suger-2"/>
                                                         <connections>
                                                             <action selector="chooseSugerPressed:" destination="bIo-1D-jY3" eventType="touchUpInside" id="1Vr-pf-dEo"/>
                                                         </connections>
@@ -790,7 +790,7 @@
                                                             <constraint firstAttribute="width" constant="35" id="pav-7O-OV4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" image="macciato"/>
+                                                        <state key="normal" image="suger-3"/>
                                                         <connections>
                                                             <action selector="chooseSugerPressed:" destination="bIo-1D-jY3" eventType="touchUpInside" id="hex-zU-Au5"/>
                                                         </connections>
@@ -1119,6 +1119,7 @@
                         <outlet property="cartTableView" destination="zMw-iw-2es" id="eRt-Cn-B2t"/>
                         <outlet property="delivaryCostLabel" destination="7VS-1o-F4S" id="58m-Zg-1nF"/>
                         <outlet property="subTotalLabel" destination="2cN-UO-x1r" id="jFQ-uw-BoE"/>
+                        <outlet property="tableView" destination="zMw-iw-2es" id="YYf-xY-67r"/>
                         <outlet property="totalLabel" destination="7DO-hd-Dom" id="2zU-zr-XZd"/>
                     </connections>
                 </viewController>
@@ -1212,7 +1213,10 @@
         <image name="facebook" width="800" height="1540"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="macciato" width="37" height="55"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="suger-0" width="21" height="21"/>
+        <image name="suger-1" width="12" height="12"/>
+        <image name="suger-2" width="26" height="18"/>
+        <image name="suger-3" width="25" height="23"/>
     </resources>
 </document>
