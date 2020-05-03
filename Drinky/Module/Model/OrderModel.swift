@@ -12,6 +12,8 @@ struct OrderModel {
     let drinkId: String
     let orderId: String
     let userId: String
+    let drinkName: String
+    let drinkImage: String
     let size: String
     let suger: String
     let quantity: String

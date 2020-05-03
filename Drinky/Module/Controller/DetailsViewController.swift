@@ -105,7 +105,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: Any) {
-        fetchOrder(size, String(suger), String(stepper.value), String(price * Int(stepper.value)))
+        fetchOrder(size, String(suger), String(Int(stepper.value)), String(price * Int(stepper.value)))
         let alert = UIAlertController(title: "Success", message: "Your order added to Cart", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (_) in
             self.navigationController?.popViewController(animated: true)

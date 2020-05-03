@@ -19,14 +19,21 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     let db = Firestore.firestore()
     fileprivate var orders: [OrderModel] = []
-    fileprivate var drink: DrinkModel?
-    
-//    var cartItems = ["Tea","Cofee","Laite","Cuputchino","Hot Choclate"]
+    fileprivate let delivery = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCartTableView()
         setupTitleNavItem(navTitle: "Cart")
+        loadOrders()
+    }
+    
+    func displayData() {
+        let subTotal = calculateSubtotalTotalPrice()
+        let total = calculateTotalPrice()
+        delivaryCostLabel.text = String(delivery)
+        subTotalLabel.text = String(subTotal)
+        totalLabel.text = String(total)
     }
     
     func registerCartTableView() {
@@ -34,11 +41,37 @@ class CartViewController: UIViewController {
         cartTableView.register(cellNib, forCellReuseIdentifier: "CartItemCell")
     }
     
-    @IBAction func checkoutPressed(_ sender: Any) {
+    @IBAction func checkOutPressed(_ sender: Any) {
+        fetchOrderHistory("Cairo-Mock")
+        presentSimpleAlert(viewController: self, title: "Success", message: "Your Order checked out")
     }
+    
+    func calculateSubtotalTotalPrice() -> Int {
+        var subTotal = 0
+        for order in orders {
+            subTotal += Int(order.price)!
+        }
+        return subTotal
+    }
+    
+    func calculateTotalPrice() -> Int {
+        var total = 0
+        total = calculateSubtotalTotalPrice() + delivery
+        return total
+    }
+    
+    func getOrdersId() -> [String] {
+        var ordersId: [String] = []
+        for order in orders {
+            ordersId.append(order.orderId)
+        }
+        return ordersId
+    }
+    
     
 }
 
+//MARK: - Table View Delegate and Data Source
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         orders.count
@@ -46,7 +79,10 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath) as! CartItemCell
-//        cell.displayData(<#T##name: String##String#>, <#T##size: String##String#>, <#T##price: String##String#>, <#T##quantity: String##String#>, <#T##image: String?##String?#>)
+        cell.displayData(
+            orders[indexPath.row].drinkName, orders[indexPath.row].size,
+            orders[indexPath.row].price, orders[indexPath.row].quantity,
+            orders[indexPath.row].drinkName)
         return cell
     }
     
@@ -54,65 +90,74 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         100
     }
     
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        tableView.reloadData()
+//    }
 }
 
 
 //MARK: - Firestore Methods
-//extension CartViewController {
-//    func loadOrders() {
-//        
-//        guard let currentUser = Auth.auth().currentUser else {
-//            print("Faild to load current user")
-//            return
-//        }
-//        let userId = currentUser.uid
-//        
-//        db.collection("orders").whereField("user-id", isEqualTo: userId).getDocuments {
-//            [weak self] (snapshot, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//            if let snapshot = snapshot {
-//                for document in snapshot.documents {
-//                    let data = document.data()
-//                    self?.orders.append(OrderModel(
-//                        drinkId: data["drink-id"] as! String,
-//                        orderId: data["order-id"] as! String,
-//                        userId: data["user-id"] as! String,
-//                        size: data["size"] as! String,
-//                        suger: data["suger"] as! String,
-//                        quantity: data["quantity"] as! String,
-//                        price: data["total-price"] as! String))
-//                }
-//                DispatchQueue.main.async {
-//                    self?.tableView.reloadData()
-//                }
-//                
-//            }
-//        }
-//    }
-//    
-//    db.collection("drinks").whereField("id", isEqualTo: ).getDocuments {
-//        [weak self] (snapshot, error) in
-//        if let error = error {
-//            print(error.localizedDescription)
-//        }
-//        if let snapshot = snapshot {
-//            for document in snapshot.documents {
-//                let data = document.data()
-//                self?.orders.append(OrderModel(
-//                    drinkId: data["drink-id"] as! String,
-//                    orderId: data["order-id"] as! String,
-//                    userId: data["user-id"] as! String,
-//                    size: data["size"] as! String,
-//                    suger: data["suger"] as! String,
-//                    quantity: data["quantity"] as! String,
-//                    price: data["total-price"] as! String))
-//            }
-//            DispatchQueue.main.async {
-//                self?.tableView.reloadData()
-//            }
-//            
-//        }
-//    }
-//}
+extension CartViewController {
+    func loadOrders() {
+
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+
+        db.collection("orders").whereField("user-id", isEqualTo: userId).getDocuments {
+            [weak self] (snapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    self?.orders.append(OrderModel(
+                        drinkId: data["drink-id"] as! String,
+                        orderId: data["order-id"] as! String,
+                        userId: data["user-id"] as! String,
+                        drinkName: data["drink-name"] as! String,
+                        drinkImage: data["drink-image"] as! String,
+                        size: data["size"] as! String,
+                        suger: data["suger"] as! String,
+                        quantity: data["quantity"] as! String,
+                        price: data["total-price"] as! String))
+                }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.displayData()
+                }
+
+            }
+        }
+    }
+    
+    
+    func fetchOrderHistory(_ address: String?) {
+        guard let address = address else {
+            presentSimpleAlert(viewController: self, title: "Check out error", message: "Please enter your address")
+            return
+        }
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        let ordersId: [String] = getOrdersId()
+        let subTotal = String(calculateSubtotalTotalPrice())
+        let total = String(calculateTotalPrice())
+        let newDocument = db.collection("order-history").document()
+        newDocument.setData([
+            "order-history-id":newDocument.documentID,
+            "user-id": userId,
+            "orders-id": ordersId,
+            "address": address,
+            "delivery": String(delivery),
+            "sub-total": subTotal,
+            "total": total,
+        ])
+
+    }
+}
