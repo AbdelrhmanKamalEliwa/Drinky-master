@@ -10,29 +10,18 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var backgroundHolderView: UIView!
     @IBOutlet private weak var cupImage: UIImageView!
     @IBOutlet private weak var cupNameLabel: UILabel!
     
-//    var cupName: String! {
-//        didSet {
-//            cupNameLabel.text = cupName
-//        }
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundHolderView.layer.cornerRadius = 10
+    }
     
     func displayData(drinkName: String, drinkImage: String?) {
         cupNameLabel.text = drinkName
         cupImage.image = UIImage(named: drinkImage ?? "error-image")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

@@ -16,6 +16,9 @@
 		C2B6242D245CE2DB00A34F11 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6242B245CE2DB00A34F11 /* MenuTableViewCell.swift */; };
 		C2B6242E245CE2DB00A34F11 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B6242C245CE2DB00A34F11 /* MenuTableViewCell.xib */; };
 		C2B62430245CE42F00A34F11 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6242F245CE42F00A34F11 /* HomeTabBarController.swift */; };
+		C2C5F7BE245EA89D00D8E103 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5F7BD245EA89D00D8E103 /* CartViewController.swift */; };
+		C2C5F7C2245EAFFD00D8E103 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C5F7C0245EAFFD00D8E103 /* CartItemCell.swift */; };
+		C2C5F7C3245EAFFD00D8E103 /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C5F7C1245EAFFD00D8E103 /* CartItemCell.xib */; };
 		C2C821FC24594023006C1776 /* SliderImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C821FA24594023006C1776 /* SliderImageViewCell.swift */; };
 		C2C821FD24594023006C1776 /* SliderImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C821FB24594023006C1776 /* SliderImageViewCell.xib */; };
 		C2E23A53245AD38E00FA4F86 /* DrinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */; };
@@ -42,6 +45,9 @@
 		C2B6242B245CE2DB00A34F11 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C2B6242C245CE2DB00A34F11 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		C2B6242F245CE42F00A34F11 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		C2C5F7BD245EA89D00D8E103 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		C2C5F7C0245EAFFD00D8E103 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
+		C2C5F7C1245EAFFD00D8E103 /* CartItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
 		C2C821FA24594023006C1776 /* SliderImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderImageViewCell.swift; sourceTree = "<group>"; };
 		C2C821FB24594023006C1776 /* SliderImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderImageViewCell.xib; sourceTree = "<group>"; };
 		C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksModel.swift; sourceTree = "<group>"; };
@@ -118,6 +124,16 @@
 			path = MenuViewController;
 			sourceTree = "<group>";
 		};
+		C2C5F7BF245EAFAA00D8E103 /* CartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2C5F7BD245EA89D00D8E103 /* CartViewController.swift */,
+				C2C5F7C0245EAFFD00D8E103 /* CartItemCell.swift */,
+				C2C5F7C1245EAFFD00D8E103 /* CartItemCell.xib */,
+			);
+			path = CartViewController;
+			sourceTree = "<group>";
+		};
 		C2E23A4C245AD1D300FA4F86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +158,7 @@
 				C2B6242F245CE42F00A34F11 /* HomeTabBarController.swift */,
 				C2B62428245CE28600A34F11 /* MenuViewController */,
 				C20985EA245D6EDE005A8266 /* DetailsViewController.swift */,
+				C2C5F7BF245EAFAA00D8E103 /* CartViewController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +300,7 @@
 			files = (
 				C2F024FC2458FEE400C1A7F7 /* LaunchScreen.storyboard in Resources */,
 				C2B6242E245CE2DB00A34F11 /* MenuTableViewCell.xib in Resources */,
+				C2C5F7C3245EAFFD00D8E103 /* CartItemCell.xib in Resources */,
 				C2C821FD24594023006C1776 /* SliderImageViewCell.xib in Resources */,
 				C2E23A56245AD52300FA4F86 /* Menu.xcassets in Resources */,
 				769D367C2459BF850000AF03 /* GoogleService-Info.plist in Resources */,
@@ -342,6 +360,8 @@
 			files = (
 				C2F024F42458FEDF00C1A7F7 /* IntroViewController.swift in Sources */,
 				C2B6242A245CE2B000A34F11 /* MenuViewController.swift in Sources */,
+				C2C5F7C2245EAFFD00D8E103 /* CartItemCell.swift in Sources */,
+				C2C5F7BE245EA89D00D8E103 /* CartViewController.swift in Sources */,
 				C2B62430245CE42F00A34F11 /* HomeTabBarController.swift in Sources */,
 				C2F024F02458FEDF00C1A7F7 /* AppDelegate.swift in Sources */,
 				C28CF215245A31450016D326 /* RegisterViewController.swift in Sources */,

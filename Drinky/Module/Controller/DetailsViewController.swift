@@ -23,25 +23,39 @@ class DetailsViewController: UIViewController {
     fileprivate var drink: DrinkModel?
     fileprivate var price = 0
     var drinkId = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar(title: "Preferences")
         getDrink(drindId: drinkId)
-        displayTotalPrice()
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func smallSizeButtonTapped(_ sender: Any) {
-        drinkPrice.text = "\(drink!.price[0]) EGP"
-        price = drink!.price[0]
+    @IBAction private func chooseCupSizePressed(_ sender: UIButton) {
+        let allButtonTags = [1, 2, 3]
+        let currentButtonTag = sender.tag
+        
+        allButtonTags.filter { $0 != currentButtonTag }.forEach { tag in
+            if let button = self.view.viewWithTag(tag) as? UIButton {
+                button.setImage(UIImage(named: "123"), for: .normal)
+                button.isSelected = false
+            }
+        }
+        sender.setImage(UIImage(named: "321"), for: .normal)
+        if sender.tag == 1 {
+            drinkPrice.text = "\(drink!.price[0]) EGP"
+            price = drink!.price[0]
+        } else if sender.tag == 2 {
+            drinkPrice.text = "\(drink!.price[1]) EGP"
+            price = drink!.price[1]
+        } else if sender.tag == 3 {
+            drinkPrice.text = "\(drink!.price[2]) EGP"
+            price = drink!.price[2]
+        }
+        displayTotalPrice()
+        sender.isSelected = !sender.isSelected
     }
-    @IBAction func mediumSizeButtonTapped(_ sender: Any) {
-        drinkPrice.text = "\(drink!.price[1]) EGP"
-        price = drink!.price[1]
-    }
-    @IBAction func largeSizeButtonTapped(_ sender: Any) {
-        drinkPrice.text = "\(drink!.price[2]) EGP"
-        price = drink!.price[2]
+    
+    @IBAction func chooseSugerPressed(_ sender: UIButton) {
     }
     
     @IBAction func stepperAction(_ sender: Any) {
@@ -53,13 +67,14 @@ class DetailsViewController: UIViewController {
         totalPrice.text = "\(price * Int(stepper.value)) EGP"
     }
     
-    @IBAction func addToFavoriteTapped(_ sender: Any) {
+    @IBAction func addToFavoriteTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {sender.tintColor = .red} else {sender.tintColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)}
+        
     }
     
     @IBAction func addToCartPressed(_ sender: Any) {
     }
-    
-    
     
     func displayData(_ drinkImage: String?, _ name: String, _ description: String, _ price: [Int]) {
         cupImage.layer.cornerRadius = 10
@@ -94,7 +109,6 @@ class DetailsViewController: UIViewController {
                                       (self?.drink!.description)!,
                                       (self?.drink!.price)!)
                 }
-                
             }
         }
     }
