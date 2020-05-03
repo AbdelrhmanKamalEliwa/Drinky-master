@@ -41,16 +41,32 @@ class DetailsViewController: UIViewController {
             }
         }
         sender.setImage(UIImage(named: "321"), for: .normal)
+        
         if sender.tag == 1 {
+            if drink!.price.count == 0 {
+                presentSimpleAlert(viewController: self, title: "Sorry", message: "This size is not available now.")
+                return
+            }
             drinkPrice.text = "\(drink!.price[0]) EGP"
             price = drink!.price[0]
+            
         } else if sender.tag == 2 {
+            if drink!.price.count == 1 {
+                presentSimpleAlert(viewController: self, title: "Sorry", message: "This size is not available now.")
+                return
+            }
             drinkPrice.text = "\(drink!.price[1]) EGP"
             price = drink!.price[1]
+            
         } else if sender.tag == 3 {
+            if drink!.price.count == 2 || drink!.price.count == 1 {
+                presentSimpleAlert(viewController: self, title: "Sorry", message: "This size is not available now.")
+                return
+            }
             drinkPrice.text = "\(drink!.price[2]) EGP"
             price = drink!.price[2]
         }
+        
         displayTotalPrice()
         sender.isSelected = !sender.isSelected
     }
