@@ -19,7 +19,6 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     let db = Firestore.firestore()
     fileprivate var orders: [OrderModel] = []
-    fileprivate var safeOrders: [OrderModel] = []
     fileprivate let delivery = 10
     
     override func viewDidLoad() {
@@ -100,6 +99,21 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         100
     }
     
+    func tableView(_ tableView: UITableView,
+                       trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .normal, title:  "Remove", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                self.deleteOrder(self.orders[indexPath.row].orderId)
+                self.orders.remove(at: indexPath.row)
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
+                success(true)
+            })
+            deleteAction.backgroundColor = .systemRed
+            deleteAction.image = UIImage(systemName: "trash")
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+    
 //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
 //        tableView.reloadData()
 //    }
@@ -116,7 +130,9 @@ extension CartViewController {
         }
         let userId = currentUser.uid
 
-        db.collection("orders").whereField("user-id", isEqualTo: userId).getDocuments {
+        db.collection("orders")
+            .whereField("user-id", isEqualTo: userId)
+            .whereField("is-checked-out", isEqualTo: false).getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -137,16 +153,22 @@ extension CartViewController {
                         isCheckedOut: data["is-checked-out"] as! Bool))
                 }
                 
-//                for order in self!.orders {
-//                    if order.isCheckedOut == false {
-//                        self!.safeOrders.append(order)
-//                    }
-//                }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.displayData()
                 }
                 
+            }
+        }
+    }
+    
+    
+    func deleteOrder(_ orderId: String) {
+        db.collection("orders").document(orderId).delete { [weak self] (error) in
+            if let error = error {
+                self?.presentSimpleAlert(viewController: self!, title: "Failure", message: error.localizedDescription)
+            } else {
+                self?.presentSimpleAlert(viewController: self!, title: "Success", message: "Your order deleted successfuly")
             }
         }
     }
