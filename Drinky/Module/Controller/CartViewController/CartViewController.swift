@@ -24,8 +24,12 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCartTableView()
-        setupTitleNavItem(navTitle: "Cart")
         loadOrders()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Cart"
     }
     
     func displayData() {

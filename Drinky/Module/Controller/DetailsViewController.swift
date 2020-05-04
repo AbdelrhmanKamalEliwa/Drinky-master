@@ -39,11 +39,11 @@ class DetailsViewController: UIViewController {
         
         allButtonTags.filter { $0 != currentButtonTag }.forEach { tag in
             if let button = self.view.viewWithTag(tag) as? UIButton {
-                button.setImage(UIImage(named: "123"), for: .normal)
+                button.setImage(UIImage(named: "CupSize0"), for: .normal)
                 button.isSelected = false
             }
         }
-        sender.setImage(UIImage(named: "321"), for: .normal)
+        sender.setImage(UIImage(named: "CupSize1"), for: .normal)
         
         if sender.tag == 1 {
             if drink!.price.count == 0 {
@@ -72,21 +72,32 @@ class DetailsViewController: UIViewController {
             price = drink!.price[2]
             size = "L"
         }
-        
         displayTotalPrice()
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func chooseSugerPressed(_ sender: UIButton) {
-        if sender.tag == 1 {
+    @IBAction private func chooseSugerPressed(_ sender: UIButton) {
+        let allSugarTags = [4, 5, 6, 7]
+        let currentSugarTag = sender.tag
+        
+        allSugarTags.filter { $0 != currentSugarTag }.forEach { tag in
+            if let sugarButton = self.view.viewWithTag(tag) as? UIButton {
+                sugarButton.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                sugarButton.isSelected = false
+            }
+        }
+        sender.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        
+        if sender.tag == 4 {
             suger = 0
-        } else if sender.tag == 2 {
+        } else if sender.tag == 5 {
             suger = 1
-        } else if sender.tag == 3 {
+        } else if sender.tag == 6 {
             suger = 2
-        } else if sender.tag == 4 {
+        } else if sender.tag == 7 {
             suger = 3
         }
+        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func stepperAction(_ sender: Any) {

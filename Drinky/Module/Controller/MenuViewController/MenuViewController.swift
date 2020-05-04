@@ -29,11 +29,18 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tabBarController?.title = "Menu"
         registerMenuTableView()
         categoriesSegmentedControl.selectedSegmentIndex = 0
         sutupSegmentControlAttributes()
         setupSearchBar()
         loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Menu"
+//        self.tabBarController?.navigationItem.leftBarButtonItem = settingsButton //This is the IBOutlet variable that you previously added
     }
     
     func loadData() {
@@ -122,8 +129,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

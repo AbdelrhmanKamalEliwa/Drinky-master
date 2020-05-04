@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
                 presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
                 return
         }
-        
         login()
     }
     

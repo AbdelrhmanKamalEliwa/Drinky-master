@@ -12,7 +12,7 @@ class HomeTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBarForTabBar(title: "Menu")
+        setupNavBarForTabBar(title: "Home")
         setupTabAttributes()
     }
     
