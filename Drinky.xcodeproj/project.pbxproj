@@ -47,6 +47,7 @@
 		F44C7D9E24606DF000E84EE3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C7D9C24606DF000E84EE3 /* UserModel.swift */; };
 		F4817869245F233F00A3D86E /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4817868245F233F00A3D86E /* OrderModel.swift */; };
 		F481786B245F5FD100A3D86E /* OrderHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F481786A245F5FD100A3D86E /* OrderHistoryModel.swift */; };
+		F4F095522460D820001CC19A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F095512460D820001CC19A /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		F44C7D9C24606DF000E84EE3 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F4817868245F233F00A3D86E /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		F481786A245F5FD100A3D86E /* OrderHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryModel.swift; sourceTree = "<group>"; };
+		F4F095512460D820001CC19A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,7 +294,7 @@
 		C2F024EE2458FEDF00C1A7F7 /* Drinky */ = {
 			isa = PBXGroup;
 			children = (
-				F481786C245F769800A3D86E /* Networking */,
+				F4F095502460D80B001CC19A /* Networking */,
 				C2E23A4F245AD27400FA4F86 /* Application */,
 				C28CF219245A4DE30016D326 /* Utilities */,
 				C28CF218245A4D940016D326 /* Module */,
@@ -311,9 +313,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F481786C245F769800A3D86E /* Networking */ = {
+		F4F095502460D80B001CC19A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F4F095512460D820001CC19A /* UserManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 			files = (
 				C253E9E8245FF71F009E0701 /* FavoriteViewController.swift in Sources */,
 				C2F024F42458FEDF00C1A7F7 /* IntroViewController.swift in Sources */,
+				F4F095522460D820001CC19A /* UserManager.swift in Sources */,
 				C2B6242A245CE2B000A34F11 /* MenuViewController.swift in Sources */,
 				C2C5F7C2245EAFFD00D8E103 /* CartItemCell.swift in Sources */,
 				C253E9DA245FCC5E009E0701 /* ProfileViewCell.swift in Sources */,

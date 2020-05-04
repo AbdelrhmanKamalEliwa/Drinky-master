@@ -114,9 +114,10 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
     
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        tableView.reloadData()
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        tableView.reloadData()
+    }
+    
 }
 
 
@@ -152,12 +153,10 @@ extension CartViewController {
                         price: data["total-price"] as! String,
                         isCheckedOut: data["is-checked-out"] as! Bool))
                 }
-                
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.displayData()
                 }
-                
             }
         }
     }
