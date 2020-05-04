@@ -18,9 +18,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var stepperCounter: UILabel!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var drinkDescription: UILabel!
+    @IBOutlet weak var addToFavoriteButton: UIButton!
     
     fileprivate let db = Firestore.firestore()
     fileprivate var drink: DrinkModel?
+    fileprivate var user: UserModel?
     fileprivate var price = 0
     fileprivate var size = ""
     fileprivate var suger = 0
@@ -110,8 +112,13 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addToFavoriteTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {sender.tintColor = .red} else {sender.tintColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)}
+        if sender.tintColor == .red {
+            sender.tintColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)
+            removeFromFavorite()
+        } else {
+            sender.tintColor = .red
+            addToFavorite()
+        }
         
     }
     
@@ -158,6 +165,7 @@ class DetailsViewController: UIViewController {
                                       (self?.drink!.description)!,
                                       (self?.drink!.price)!)
                 }
+                self?.checkForFavorite()
             }
         }
     }
@@ -192,6 +200,86 @@ class DetailsViewController: UIViewController {
             "total-price": totalprice
         ])
 
+    }
+    
+    func addToFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        guard let drink = drink else {
+            print("Faild to load drink id")
+            return
+        }
+        
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.updateData(["favorite-drink": FieldValue.arrayUnion([drink.id])])
+    }
+    
+    func removeFromFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        guard let drink = drink else {
+            print("Faild to load drink id")
+            return
+        }
+        
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.updateData(["favorite-drink": FieldValue.arrayRemove([drink.id])])
+    }
+    
+    func checkForFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        getFavoriteDrinks(userId: userId)
+    }
+    
+    func getFavoriteDrinks(userId: String) {
+        db.collection("registed-user").whereField("id", isEqualTo: userId).getDocuments {
+            [weak self] (snapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    self?.user = UserModel(
+                        id: data["id"] as! String,
+                        firstName: data["first-name"] as! String,
+                        lastName: data["last-name"] as! String,
+                        email: data["email"] as! String,
+                        mobileNumber: data["mobile-number"] as! String,
+                        favoriteDrinks: data["favorite-drink"] as? [String],
+                        address: data["address"] as? String)
+
+                }
+            }
+            
+            guard let user = self?.user else {
+                print("can't load user")
+                return
+            }
+            
+            guard let favoriteDrinks = user.favoriteDrinks else {
+                print("there is no favorite drinks")
+                return
+            }
+
+            if favoriteDrinks.contains((self?.drink!.id)!) {
+                self?.addToFavoriteButton.tintColor = .red
+            } else {
+                self?.addToFavoriteButton.tintColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)
+            }
+        }
     }
     
 }

@@ -43,6 +43,8 @@
 		C2F024FC2458FEE400C1A7F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F024FA2458FEE400C1A7F7 /* LaunchScreen.storyboard */; };
 		C2F0250424590D9500C1A7F7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0250324590D9500C1A7F7 /* UIView+Extensions.swift */; };
 		C2F0250624590DA300C1A7F7 /* BaseVC+NavForTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0250524590DA200C1A7F7 /* BaseVC+NavForTabBar.swift */; };
+		F44C7D9D24606DF000E84EE3 /* FavoriteDrinksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C7D9B24606DF000E84EE3 /* FavoriteDrinksModel.swift */; };
+		F44C7D9E24606DF000E84EE3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C7D9C24606DF000E84EE3 /* UserModel.swift */; };
 		F4817869245F233F00A3D86E /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4817868245F233F00A3D86E /* OrderModel.swift */; };
 		F481786B245F5FD100A3D86E /* OrderHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F481786A245F5FD100A3D86E /* OrderHistoryModel.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +90,8 @@
 		C2F024FD2458FEE400C1A7F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2F0250324590D9500C1A7F7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C2F0250524590DA200C1A7F7 /* BaseVC+NavForTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseVC+NavForTabBar.swift"; sourceTree = "<group>"; };
+		F44C7D9B24606DF000E84EE3 /* FavoriteDrinksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteDrinksModel.swift; sourceTree = "<group>"; };
+		F44C7D9C24606DF000E84EE3 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F4817868245F233F00A3D86E /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		F481786A245F5FD100A3D86E /* OrderHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +214,8 @@
 				C2E23A52245AD38E00FA4F86 /* DrinksModel.swift */,
 				F4817868245F233F00A3D86E /* OrderModel.swift */,
 				F481786A245F5FD100A3D86E /* OrderHistoryModel.swift */,
+				F44C7D9B24606DF000E84EE3 /* FavoriteDrinksModel.swift */,
+				F44C7D9C24606DF000E84EE3 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -452,12 +458,14 @@
 				C253E9E0245FF68C009E0701 /* OrderHistoryViewController.swift in Sources */,
 				C2F0250624590DA300C1A7F7 /* BaseVC+NavForTabBar.swift in Sources */,
 				C253E9DE245FF62E009E0701 /* AccountInfoViewController.swift in Sources */,
+				F44C7D9E24606DF000E84EE3 /* UserModel.swift in Sources */,
 				F4817869245F233F00A3D86E /* OrderModel.swift in Sources */,
 				C2E23A53245AD38E00FA4F86 /* DrinksModel.swift in Sources */,
 				C28CF217245A4D7A0016D326 /* LoginViewController.swift in Sources */,
 				C2F0250424590D9500C1A7F7 /* UIView+Extensions.swift in Sources */,
 				C2F024F22458FEDF00C1A7F7 /* SceneDelegate.swift in Sources */,
 				C2C821FC24594023006C1776 /* SliderImageViewCell.swift in Sources */,
+				F44C7D9D24606DF000E84EE3 /* FavoriteDrinksModel.swift in Sources */,
 				F481786B245F5FD100A3D86E /* OrderHistoryModel.swift in Sources */,
 				C20985EB245D6EDE005A8266 /* DetailsViewController.swift in Sources */,
 				C2B6242D245CE2DB00A34F11 /* MenuTableViewCell.swift in Sources */,
