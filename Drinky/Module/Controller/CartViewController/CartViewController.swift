@@ -19,6 +19,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     let db = Firestore.firestore()
     fileprivate var orders: [OrderModel] = []
+    fileprivate var safeOrders: [OrderModel] = []
     fileprivate let delivery = 10
     
     override func viewDidLoad() {
@@ -46,8 +47,13 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func checkOutPressed(_ sender: Any) {
-        fetchOrderHistory("Cairo-Mock")
-        presentSimpleAlert(viewController: self, title: "Success", message: "Your Order checked out")
+        if orders.count == 0 {
+            print("howa bzero")
+        } else {
+            updateOrdersAfterChecckOut()
+            presentSimpleAlert(viewController: self, title: "Success", message: "Your Order checked out")
+        }
+        
     }
     
     func calculateSubtotalTotalPrice() -> Int {
@@ -102,8 +108,8 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Firestore Methods
 extension CartViewController {
+    
     func loadOrders() {
-
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return
@@ -127,15 +133,31 @@ extension CartViewController {
                         size: data["size"] as! String,
                         suger: data["suger"] as! String,
                         quantity: data["quantity"] as! String,
-                        price: data["total-price"] as! String))
+                        price: data["total-price"] as! String,
+                        isCheckedOut: data["is-checked-out"] as! Bool))
                 }
+                
+//                for order in self!.orders {
+//                    if order.isCheckedOut == false {
+//                        self!.safeOrders.append(order)
+//                    }
+//                }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.displayData()
                 }
-
+                
             }
         }
+    }
+    
+    
+    func updateOrdersAfterChecckOut() {
+        for order in orders {
+            let newDocument = db.collection("orders").document(order.orderId)
+            newDocument.updateData(["is-checked-out": true])
+        }
+        fetchOrderHistory("new address")
     }
     
     
@@ -162,6 +184,10 @@ extension CartViewController {
             "sub-total": subTotal,
             "total": total,
         ])
-
+        orders = []
+        delivaryCostLabel.text = "0.0"
+        subTotalLabel.text = "0.0"
+        totalLabel.text = "0.0"
+        tableView.reloadData()
     }
 }

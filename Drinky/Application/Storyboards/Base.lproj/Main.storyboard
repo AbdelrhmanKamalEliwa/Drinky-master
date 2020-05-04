@@ -1343,7 +1343,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="hOG-ux-8fg">
             <objects>
-                <viewController id="jTV-BB-K52" customClass="FavoriteViewController" customModule="Drinky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteViewController" id="jTV-BB-K52" customClass="FavoriteViewController" customModule="Drinky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NBE-4O-ubo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1362,6 +1362,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="60Y-aN-gcm"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="4jn-y2-6KC" id="P8u-cS-9F2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPx-bi-MUs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

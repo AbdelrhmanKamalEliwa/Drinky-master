@@ -49,9 +49,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let accountInfoVC = storyboard.instantiateViewController(identifier: "AccountInfoViewController") as! AccountInfoViewController
+        let favoriteVC = storyboard.instantiateViewController(identifier: "FavoriteViewController") as! FavoriteViewController
         let orderHistoryVC = storyboard.instantiateViewController(identifier: "OrderHistoryViewController") as! OrderHistoryViewController
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(accountInfoVC, animated: true)
+        } else if indexPath.row == 1 {
+            self.navigationController?.pushViewController(favoriteVC, animated: true)
         } else if indexPath.row == 2 {
             self.navigationController?.pushViewController(orderHistoryVC, animated: true)
         }

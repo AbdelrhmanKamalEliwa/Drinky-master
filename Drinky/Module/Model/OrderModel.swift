@@ -18,4 +18,5 @@ struct OrderModel {
     let suger: String
     let quantity: String
     let price: String
+    let isCheckedOut: Bool
 }

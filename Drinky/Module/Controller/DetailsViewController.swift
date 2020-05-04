@@ -197,10 +197,11 @@ class DetailsViewController: UIViewController {
             "size": size,
             "suger": suger,
             "quantity": quantity,
-            "total-price": totalprice
+            "total-price": totalprice,
+            "is-checked-out": false
         ])
-
     }
+    
     
     func addToFavorite() {
         guard let currentUser = Auth.auth().currentUser else {

@@ -139,11 +139,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         if menuTableView.panGestureRecognizer.translation(in: self.view).y < 0 {
             self.menuSearchBar.isHidden = true
             self.categoriesSegmentedControl.isHidden = true
-            menuTableViewTopConstraint.constant = 0
+            self.menuTableViewTopConstraint.constant = 0
         } else {
             self.menuSearchBar.isHidden = false
             self.categoriesSegmentedControl.isHidden = false
-            menuTableViewTopConstraint.constant = 108
+            self.menuTableViewTopConstraint.constant = 108
         }
     }
     
@@ -301,7 +301,10 @@ extension MenuViewController {
     func searchOnDrink(drink: String) {
 //        db.collection("drinks").whereField(
 //        let myPredicate = NSPredicate(format: "name contains[c] '\(drink)'")
-        db.collection("drinks").whereField("name", isEqualTo: drink).getDocuments {
+        db.collection("drinks")
+            .whereField("name", isLessThan: drink)
+            .whereField("name", isGreaterThanOrEqualTo: drink)
+            .getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
