@@ -33,6 +33,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var phoneNumberSeparatorView: UIView!
     
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressSeparatorView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar(title: "Register")
@@ -125,6 +130,8 @@ extension RegisterViewController: UITextFieldDelegate {
             setupDidSelectedValues(textField: passwordTextField, label: passwordLabel, separator: passwordSeparatorView)
         } else if textField == phoneNumberTextField {
             setupDidSelectedValues(textField: phoneNumberTextField, label: phoneNumberLabel, separator: phoneNumberSeparatorView)
+        } else if textField == addressTextField {
+            setupDidSelectedValues(textField: addressTextField, label: addressLabel, separator: addressSeparatorView)
         }
     }
     
@@ -146,15 +153,18 @@ extension RegisterViewController: UITextFieldDelegate {
         emailSeparatorView.backgroundColor = resetColor
         passwordSeparatorView.backgroundColor = resetColor
         phoneNumberSeparatorView.backgroundColor = resetColor
+        addressSeparatorView.backgroundColor = resetColor
         fristNameLabel.isHidden = isHidden
         lastNameLabel.isHidden = isHidden
         emailLabel.isHidden = isHidden
         passwordLabel.isHidden = isHidden
         phoneNumberLabel.isHidden = isHidden
+        addressLabel.isHidden = isHidden
         fristNameTextField.placeholder = "Frist name"
         lastNameTextField.placeholder = "Last name"
         emailTextField.placeholder = "Email"
         passwordTextField.placeholder = "Password"
         phoneNumberTextField.placeholder = "Phone number"
+        addressTextField.placeholder = "Address"
     }
 }
