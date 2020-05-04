@@ -50,6 +50,7 @@ class RegisterViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         phoneNumberTextField.delegate = self
+        addressTextField.delegate = self
     }
     
     @IBAction func registerPressed(_ sender: Any) {
