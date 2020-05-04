@@ -50,28 +50,44 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTableCell", for: indexPath) as! FavoriteTableCell
         cell.displayData(drinkName: drinks[indexPath.row].name, drinkImage: drinks[indexPath.row].image)
         return cell
     }
     
     func registerTableView() {
-        let menuNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
-        tableView.register(menuNib, forCellReuseIdentifier: "MenuTableViewCell")
+        let nib = UINib(nibName: "FavoriteTableCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "FavoriteTableCell")
     }
+    
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title:  "Remove", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.removeFromFavorite(self.drinks[indexPath.row].id)
+            self.drinks.remove(at: indexPath.row)
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+            success(true)
+        })
+        deleteAction.backgroundColor = .systemRed
+        deleteAction.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
 }
 
 //MARK: - Firestore Methods
 extension FavoriteViewController {
     
     func getUserInfo() {
-        
+
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return
         }
         let userId = currentUser.uid
-        
+
         db.collection("registed-user").whereField("id", isEqualTo: userId).getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -98,20 +114,19 @@ extension FavoriteViewController {
                 print("there is no favorite drinks")
                 return
             }
-            
             self?.fetchFavoriteDrinks(favoriteDrinks)
         }
     }
-    
-    
-    
+
+
+
     func fetchFavoriteDrinks(_ favoriteDrinks: [String]?) {
-        
+
         guard let favoriteDrinks = favoriteDrinks else {
             print("can't load user")
             return
         }
-        
+
         for drink in favoriteDrinks {
             db.collection("drinks").whereField("id", isEqualTo: drink).getDocuments {
                 [weak self] (snapshot, error) in
@@ -130,10 +145,22 @@ extension FavoriteViewController {
                             rate: data["description"] as? Int,
                             image: data["image"] as? String))
                     }
+                    print(self!.drinks)
+                    self?.tableView.reloadData()
                 }
             }
-            
+
         }
-        tableView.reloadData()
     }
+    
+    func removeFromFavorite(_ drinkId: String) {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.updateData(["favorite-drink": FieldValue.arrayRemove([drinkId])])
+    }
+    
 }

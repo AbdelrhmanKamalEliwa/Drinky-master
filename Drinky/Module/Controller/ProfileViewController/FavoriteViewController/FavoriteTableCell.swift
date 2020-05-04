@@ -10,11 +10,20 @@ import UIKit
 
 class FavoriteTableCell: UITableViewCell {
 
+    @IBOutlet weak var drinkNameLabel: UILabel!
+    @IBOutlet weak var drinkImageView: UIImageView!
+    @IBOutlet weak var holderView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        holderView.layer.cornerRadius = 10
     }
 
+    func displayData(drinkName: String, drinkImage: String?) {
+        drinkNameLabel.text = drinkName
+        drinkImageView.image = UIImage(named: drinkImage ?? "error-image")
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
