@@ -23,7 +23,7 @@ class AccountInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "Your Account Informations"
+        setupNavigationBar(title: "Account Informations")
         holderBackgroundView.layer.cornerRadius = 10
         getUserInfo()
     }
@@ -34,9 +34,7 @@ class AccountInfoViewController: UIViewController {
         addressLabel.text = address
         phoneNumberLabel.text = phoneNumber
     }
-
 }
-
 
 //MARK: - Firestore Methods
 extension AccountInfoViewController {

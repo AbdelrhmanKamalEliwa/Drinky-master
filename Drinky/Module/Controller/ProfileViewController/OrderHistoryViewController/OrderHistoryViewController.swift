@@ -18,6 +18,7 @@ class OrderHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar(title: "Order history")
         registerOrderListCell()
         loadOrders()
     }

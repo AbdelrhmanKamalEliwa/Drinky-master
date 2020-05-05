@@ -20,6 +20,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar(title: "Favorites")
         tableView.delegate = self
         tableView.dataSource = self
         registerTableView()

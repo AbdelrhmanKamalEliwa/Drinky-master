@@ -59,7 +59,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 3 {
             self.presentSimpleAlert(viewController: self, title: "Contact Us", message: "You can contact us on 01009494758")
         } else if indexPath.row == 4 {
-            self.presentSimpleAlert(viewController: self, title: "About Us", message: "Know more about us at\nwww.facebook.com/DrinkyApp")
+            let aboutUsVC = AboutUsViewController()
+            aboutUsVC.modalPresentationStyle = .custom
+            aboutUsVC.modalTransitionStyle = .crossDissolve
+            present(aboutUsVC, animated: true, completion: nil)
         } else if indexPath.row == 5 {
             logout()
         }

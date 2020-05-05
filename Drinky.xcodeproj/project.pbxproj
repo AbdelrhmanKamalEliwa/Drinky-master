@@ -22,6 +22,8 @@
 		C253E9EC245FF744009E0701 /* FavoriteTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C253E9EA245FF744009E0701 /* FavoriteTableCell.xib */; };
 		C28CF215245A31450016D326 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28CF214245A31450016D326 /* RegisterViewController.swift */; };
 		C28CF217245A4D7A0016D326 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28CF216245A4D7A0016D326 /* LoginViewController.swift */; };
+		C299C3DD2461BC0C0056C8F1 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C299C3DB2461BC0C0056C8F1 /* AboutUsViewController.swift */; };
+		C299C3DE2461BC0C0056C8F1 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C299C3DC2461BC0C0056C8F1 /* AboutUsViewController.xib */; };
 		C2B6242A245CE2B000A34F11 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B62429245CE2B000A34F11 /* MenuViewController.swift */; };
 		C2B6242D245CE2DB00A34F11 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6242B245CE2DB00A34F11 /* MenuTableViewCell.swift */; };
 		C2B6242E245CE2DB00A34F11 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B6242C245CE2DB00A34F11 /* MenuTableViewCell.xib */; };
@@ -69,6 +71,8 @@
 		C253E9EA245FF744009E0701 /* FavoriteTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableCell.xib; sourceTree = "<group>"; };
 		C28CF214245A31450016D326 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C28CF216245A4D7A0016D326 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C299C3DB2461BC0C0056C8F1 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		C299C3DC2461BC0C0056C8F1 /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		C2B62429245CE2B000A34F11 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C2B6242B245CE2DB00A34F11 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C2B6242C245CE2DB00A34F11 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				C253E9D8245FCC5E009E0701 /* ProfileViewCell.swift */,
 				C253E9D9245FCC5E009E0701 /* ProfileViewCell.xib */,
 				C253E9DD245FF62E009E0701 /* AccountInfoViewController.swift */,
+				C299C3DA2461BBC30056C8F1 /* AboutUsViewController */,
 				C253E9DC245FF5D7009E0701 /* OrderHistoryViewController */,
 				C253E9E6245FF6E9009E0701 /* FavoriteViewController */,
 			);
@@ -181,6 +186,15 @@
 				C2C821FB24594023006C1776 /* SliderImageViewCell.xib */,
 			);
 			path = IntroViewController;
+			sourceTree = "<group>";
+		};
+		C299C3DA2461BBC30056C8F1 /* AboutUsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C299C3DB2461BC0C0056C8F1 /* AboutUsViewController.swift */,
+				C299C3DC2461BC0C0056C8F1 /* AboutUsViewController.xib */,
+			);
+			path = AboutUsViewController;
 			sourceTree = "<group>";
 		};
 		C2B62428245CE28600A34F11 /* MenuViewController */ = {
@@ -393,6 +407,7 @@
 				769D367C2459BF850000AF03 /* GoogleService-Info.plist in Resources */,
 				C2C17C7324602B6900D16D49 /* OrderListTableCell.xib in Resources */,
 				C253E9E4245FF6B6009E0701 /* HistoryTableViewCell.xib in Resources */,
+				C299C3DE2461BC0C0056C8F1 /* AboutUsViewController.xib in Resources */,
 				C2F024F92458FEE400C1A7F7 /* Assets.xcassets in Resources */,
 				C2F024F72458FEDF00C1A7F7 /* Main.storyboard in Resources */,
 				C253E9DB245FCC5E009E0701 /* ProfileViewCell.xib in Resources */,
@@ -458,6 +473,7 @@
 				C2B62430245CE42F00A34F11 /* HomeTabBarController.swift in Sources */,
 				C2F024F02458FEDF00C1A7F7 /* AppDelegate.swift in Sources */,
 				C253E9D7245FCC27009E0701 /* ProfileViewController.swift in Sources */,
+				C299C3DD2461BC0C0056C8F1 /* AboutUsViewController.swift in Sources */,
 				C253E9E3245FF6B6009E0701 /* HistoryTableViewCell.swift in Sources */,
 				C253E9EB245FF744009E0701 /* FavoriteTableCell.swift in Sources */,
 				C2C17C7224602B6900D16D49 /* OrderListTableCell.swift in Sources */,
