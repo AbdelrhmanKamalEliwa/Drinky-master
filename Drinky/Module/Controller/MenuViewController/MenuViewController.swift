@@ -302,7 +302,6 @@ extension MenuViewController {
 //        db.collection("drinks").whereField(
 //        let myPredicate = NSPredicate(format: "name contains[c] '\(drink)'")
         db.collection("drinks")
-            .whereField("name", isLessThan: drink)
             .whereField("name", isGreaterThanOrEqualTo: drink)
             .getDocuments {
             [weak self] (snapshot, error) in

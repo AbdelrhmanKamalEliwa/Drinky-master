@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     
     var data = ProfileScreenManager.shared.getData()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar(title: "")
@@ -77,7 +76,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 extension ProfileViewController {
     func logout() {
         do {
-            
             try Auth.auth().signOut()
             self.dismiss(animated: true, completion: nil)
             

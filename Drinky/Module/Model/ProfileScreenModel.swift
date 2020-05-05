@@ -17,10 +17,10 @@ struct ProfileScreenModel {
 class ProfileScreenManager {
     
     static let shared = ProfileScreenManager()
-    private init() {}
     private var data: [ProfileScreenModel] = []
     
     private func fillData() {
+        data.removeAll()
         data.append(ProfileScreenModel(title: "Your Account", image: "person.circle.fill"))
         data.append(ProfileScreenModel(title: "Favorite Drinks", image: "suit.heart.fill"))
         data.append(ProfileScreenModel(title: "Orders History", image: "clock.fill"))

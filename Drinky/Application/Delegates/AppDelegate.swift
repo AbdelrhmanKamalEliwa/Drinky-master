@@ -15,7 +15,7 @@ import FBSDKCoreKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+//    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+//        if let _ = Auth.auth().currentUser {
+////            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+////            let viewController = storyboard.instantiateViewController(identifier: "MainNavigationController")
+////            window?.rootViewController = viewController
+//
+//        }
         return true
     }
 

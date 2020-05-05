@@ -19,7 +19,8 @@ class CartViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     let db = Firestore.firestore()
     fileprivate var orders: [OrderModel] = []
-    fileprivate let delivery = 10
+    fileprivate var user: UserModel?
+    fileprivate var delivery = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,21 @@ class CartViewController: UIViewController {
     }
     
     func displayData() {
-        let subTotal = calculateSubtotalTotalPrice()
-        let total = calculateTotalPrice()
-        delivaryCostLabel.text = String(delivery)
-        subTotalLabel.text = String(subTotal)
-        totalLabel.text = String(total)
+        if orders.count == 0 {
+            delivery = 0
+            let subTotal = calculateSubtotalTotalPrice()
+            let total = calculateTotalPrice()
+            delivaryCostLabel.text = String(delivery)
+            subTotalLabel.text = String(subTotal)
+            totalLabel.text = String(total)
+        } else {
+            delivery = 10
+            let subTotal = calculateSubtotalTotalPrice()
+            let total = calculateTotalPrice()
+            delivaryCostLabel.text = String(delivery)
+            subTotalLabel.text = String(subTotal)
+            totalLabel.text = String(total)
+        }
     }
     
     func registerCartTableView() {
@@ -107,6 +118,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
                 self.deleteOrder(self.orders[indexPath.row].orderId)
                 self.orders.remove(at: indexPath.row)
                 DispatchQueue.main.async {
+                    self.displayData()
                     tableView.reloadData()
                 }
                 success(true)
@@ -180,7 +192,7 @@ extension CartViewController {
             let newDocument = db.collection("orders").document(order.orderId)
             newDocument.updateData(["is-checked-out": true])
         }
-        fetchOrderHistory("new address")
+        getUserInfo()
     }
     
     
@@ -212,5 +224,43 @@ extension CartViewController {
         subTotalLabel.text = "0.0"
         totalLabel.text = "0.0"
         tableView.reloadData()
+    }
+    
+    func getUserInfo() {
+        
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        db.collection("registed-user").whereField("id", isEqualTo: userId).getDocuments {
+            [weak self] (snapshot, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    self?.user = UserModel(
+                        id: data["id"] as! String,
+                        firstName: data["first-name"] as! String,
+                        lastName: data["last-name"] as! String,
+                        email: data["email"] as! String,
+                        mobileNumber: data["mobile-number"] as! String,
+                        favoriteDrinks: data["favorite-drink"] as? [String],
+                        address: data["address"] as? String)
+                }
+            }
+            guard let user = self?.user else {
+                print("can't load user info")
+                return
+            }
+            guard let address = user.address else {
+                print("can't load user address")
+                return
+            }
+            self?.fetchOrderHistory(address)
+        }
     }
 }

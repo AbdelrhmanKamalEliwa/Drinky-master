@@ -29,6 +29,9 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let _ = Auth.auth().currentUser {
+            goToHome()
+        }
         registerCollectionCell()
         pagingDots.numberOfPages = images.count
         imagesScrollTimer()

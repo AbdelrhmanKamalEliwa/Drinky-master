@@ -1414,7 +1414,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6ha-cH-kWE">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="hzO-c9-sbD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" modalPresentationStyle="fullScreen" id="hzO-c9-sbD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="hw8-cC-9zd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gXY-xw-JLh">
