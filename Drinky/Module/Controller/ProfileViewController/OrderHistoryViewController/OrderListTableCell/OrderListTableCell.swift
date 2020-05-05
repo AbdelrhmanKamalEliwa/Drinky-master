@@ -14,12 +14,6 @@ class OrderListTableCell: UITableViewCell {
     @IBOutlet private weak var sizeLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
-//    var name: String! {
-//        didSet {
-//            nameLabel.text = name
-//        }
-//    }
-    
     func displayData(_ name: String, _ size: String, _ price: String, _ quantity: String) {
         nameLabel.text = name
         sizeLabel.text = size
