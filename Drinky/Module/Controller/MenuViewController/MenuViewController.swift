@@ -110,13 +110,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
 
         } else {
             if selectedSegment == 0 {
-                cell.displayData(drink: filteredDrinks[indexPath.row])
+                cell.displayData(drink: freshDrinks[indexPath.row])
             } else if selectedSegment == 1 {
-                cell.displayData(drink: filteredDrinks[indexPath.row])
+                cell.displayData(drink: hotDrinks[indexPath.row])
             } else if selectedSegment == 2 {
-                cell.displayData(drink: filteredDrinks[indexPath.row])
+                cell.displayData(drink: softDrinks[indexPath.row])
             } else if selectedSegment == 3 {
-                cell.displayData(drink: filteredDrinks[indexPath.row])
+                cell.displayData(drink: waterDrinks[indexPath.row])
             }
             return cell
         }
