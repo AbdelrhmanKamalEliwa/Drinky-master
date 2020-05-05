@@ -177,7 +177,7 @@ extension CartViewController {
             if let error = error {
                 self?.presentSimpleAlert(viewController: self!, title: "Failure", message: error.localizedDescription)
             } else {
-                self?.presentSimpleAlert(viewController: self!, title: "Success", message: "Your order deleted successfuly")
+                print("order deleted")
             }
         }
     }

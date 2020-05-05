@@ -24,7 +24,7 @@ class DetailsViewController: UIViewController {
     fileprivate var drink: DrinkModel?
     fileprivate var user: UserModel?
     fileprivate var price = 0
-    fileprivate var size = ""
+    fileprivate var size: String?
     fileprivate var suger = 0
     var drinkId = ""
     
@@ -124,11 +124,12 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction private func addToCartPressed(_ sender: Any) {
-//        guard size == "" else {
-//            presentSimpleAlert(viewController: self, title: "Failed", message: "Please select size")
-//            return
-//        }
-        fetchOrder(size, String(suger), String(Int(stepper.value)), String(price * Int(stepper.value)))
+        guard let safeSize = size else {
+            presentSimpleAlert(viewController: self, title: "Failed", message: "Please select size")
+            return
+        }
+        
+        fetchOrder(safeSize, String(suger), String(Int(stepper.value)), String(price * Int(stepper.value)))
         let alert = UIAlertController(title: "Success", message: "Your order added to Cart", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (_) in
             self.navigationController?.popViewController(animated: true)
