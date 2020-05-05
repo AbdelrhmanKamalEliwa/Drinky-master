@@ -15,7 +15,6 @@ class OrderHistoryViewController: UIViewController {
     @IBOutlet weak var ordersTableView: UITableView!
     fileprivate let db = Firestore.firestore()
     fileprivate var orderHistory: [OrderHistoryModel] = []
-    var data = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()

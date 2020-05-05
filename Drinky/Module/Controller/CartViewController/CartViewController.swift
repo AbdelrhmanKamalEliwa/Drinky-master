@@ -24,12 +24,14 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCartTableView()
-        loadOrders()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Cart"
+        orders.removeAll()
+        loadOrders()
     }
     
     func displayData() {
@@ -47,7 +49,7 @@ class CartViewController: UIViewController {
     
     @IBAction func checkOutPressed(_ sender: Any) {
         if orders.count == 0 {
-            print("howa bzero")
+            presentSimpleAlert(viewController: self, title: "No Orders Founded", message: "You don't have any orders in your Cart yet")
         } else {
             updateOrdersAfterChecckOut()
             presentSimpleAlert(viewController: self, title: "Success", message: "Your Order checked out")

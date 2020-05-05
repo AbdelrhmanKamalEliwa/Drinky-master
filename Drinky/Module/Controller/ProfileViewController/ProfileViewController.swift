@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     
-    var data = ["Your Account", "Favorites", "Order History"]
+    var data = ProfileScreenManager.shared.getData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +25,10 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Profile"
     }
-    
-    func registerProfileTableView() {
-        let cellNib = UINib(nibName: "ProfileViewCell", bundle: nil)
-        profileTableView.register(cellNib, forCellReuseIdentifier: "ProfileViewCell")
-    }
-
 }
 
+
+//MARK: - Table View Delegate and Data Source
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
@@ -38,7 +36,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileViewCell", for: indexPath) as! ProfileViewCell
-        cell.title = data[indexPath.row]
+        let title = data[indexPath.row].title
+        let image = data[indexPath.row].image
+        cell.displayData(title, image)
         return cell
     }
     
@@ -57,6 +57,33 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(favoriteVC, animated: true)
         } else if indexPath.row == 2 {
             self.navigationController?.pushViewController(orderHistoryVC, animated: true)
+        } else if indexPath.row == 3 {
+            self.presentSimpleAlert(viewController: self, title: "Contact Us", message: "You can contact us on 01009494758")
+        } else if indexPath.row == 4 {
+            self.presentSimpleAlert(viewController: self, title: "About Us", message: "Know more about us at\nwww.facebook.com/DrinkyApp")
+        } else if indexPath.row == 5 {
+            logout()
+        }
+    }
+    
+    func registerProfileTableView() {
+        let cellNib = UINib(nibName: "ProfileViewCell", bundle: nil)
+        profileTableView.register(cellNib, forCellReuseIdentifier: "ProfileViewCell")
+    }
+}
+
+
+//MARK: - Firebase Methods
+extension ProfileViewController {
+    func logout() {
+        do {
+            
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+            
+        } catch let error {
+            self.presentSimpleAlert(viewController: self, title: "Log Out Failure", message: "Something wrong happens while Log Out, please try again")
+            print(error)
         }
     }
 }

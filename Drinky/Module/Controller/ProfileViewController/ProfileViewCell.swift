@@ -20,6 +20,11 @@ class ProfileViewCell: UITableViewCell {
         }
     }
     
+    func displayData(_ title: String, _ image: String) {
+        titleLabel.text = title
+        titleIconImage.image = UIImage(systemName: image)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cellBackgroundView.layer.cornerRadius = 10
