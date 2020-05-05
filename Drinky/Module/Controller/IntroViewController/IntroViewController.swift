@@ -116,10 +116,10 @@ class IntroViewController: UIViewController {
             }
             let dict = result as! [String : AnyObject]
             let data = dict as NSDictionary
-            let id = data.object(forKey: "id") as! String
             let firstName = data.object(forKey: "first_name") as! String
             let lastName = data.object(forKey: "last_name") as! String
             let email = data.object(forKey: "email") as! String
+            let id = Auth.auth().currentUser!.uid
             self?.createUserInfo(id, firstName, lastName, email)
         })
         
@@ -131,7 +131,8 @@ class IntroViewController: UIViewController {
             "first-name":firstName,
             "last-name":lastName,
             "email":email,
-            "mobile-number":"",
+            "mobile-number":"Not Founded",
+            "address": "Not Founded",
             "id":userId
         ])
     }

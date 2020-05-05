@@ -121,6 +121,7 @@ class RegisterViewController: UIViewController {
             "last-name":lastNameTextField.text!,
             "email":emailTextField.text!,
             "mobile-number":phoneNumberTextField.text!,
+            "address": addressTextField.text!,
             "id":newDocument.documentID
         ])
     }
