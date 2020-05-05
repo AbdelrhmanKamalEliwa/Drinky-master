@@ -52,6 +52,7 @@
                     <constraint firstItem="ewS-Sh-mvE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="u3p-Rv-Bn7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="IY4-dL-5bu" id="Xno-jw-bqK"/>
@@ -59,7 +60,7 @@
                 <outlet property="quantityLabel" destination="ewS-Sh-mvE" id="jIL-dC-VyC"/>
                 <outlet property="sizeLabel" destination="eQd-JP-YxO" id="oSB-DS-ARh"/>
             </connections>
-            <point key="canvasLocation" x="-17" y="58"/>
+            <point key="canvasLocation" x="-20" y="24"/>
         </tableViewCell>
     </objects>
 </document>

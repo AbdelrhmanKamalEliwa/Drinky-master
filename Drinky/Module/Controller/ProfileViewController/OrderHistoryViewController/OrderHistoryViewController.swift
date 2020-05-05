@@ -22,7 +22,6 @@ class OrderHistoryViewController: UIViewController {
         let CellNib = UINib(nibName: "HistoryTableViewCell", bundle: nil)
         ordersTableView.register(CellNib, forCellReuseIdentifier: "HistoryTableViewCell")
     }
-
 }
 
 extension OrderHistoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -33,8 +32,13 @@ extension OrderHistoryViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell", for: indexPath) as! HistoryTableViewCell
         cell.order = data[indexPath.row]
+        cell.layoutSubviews()
+        cell.layoutIfNeeded()
         return cell
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }

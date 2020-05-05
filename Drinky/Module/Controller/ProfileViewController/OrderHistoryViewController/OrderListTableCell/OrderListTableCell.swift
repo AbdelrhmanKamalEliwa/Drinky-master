@@ -14,6 +14,12 @@ class OrderListTableCell: UITableViewCell {
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    var name: String! {
+        didSet {
+            nameLabel.text = name
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
