@@ -175,7 +175,6 @@ extension CartViewController {
         }
     }
     
-    
     func deleteOrder(_ orderId: String) {
         db.collection("orders").document(orderId).delete { [weak self] (error) in
             if let error = error {
@@ -185,7 +184,6 @@ extension CartViewController {
             }
         }
     }
-    
     
     func updateOrdersAfterChecckOut() {
         for order in orders {

@@ -88,7 +88,8 @@ class DetailsViewController: UIViewController {
                 sugarButton.isSelected = false
             }
         }
-        sender.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        sender.backgroundColor = #colorLiteral(red: 0.6117647059, green: 0.8745098039, blue: 0.368627451, alpha: 0.8965913955)
+        sender.layer.cornerRadius = sender.frame.height/2
         
         if sender.tag == 4 {
             suger = 0

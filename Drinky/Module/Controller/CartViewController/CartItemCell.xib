@@ -56,7 +56,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90588235294117647" green="0.47843137254901957" blue="0.0" alpha="0.40108625858767133" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.61176470589999998" green="0.87450980389999999" blue="0.36862745099999999" alpha="0.8965913955" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tsW-QF-vaN" firstAttribute="centerY" secondItem="SZS-vW-Krg" secondAttribute="centerY" id="5sv-fD-COt"/>
                             <constraint firstItem="tsW-QF-vaN" firstAttribute="leading" secondItem="Eca-WH-tRW" secondAttribute="trailing" constant="20" id="E8j-Od-wOP"/>
@@ -87,7 +87,7 @@
                 <outlet property="quantityLabel" destination="Bw6-2P-ra0" id="jeV-AA-Zuf"/>
                 <outlet property="sizeLabel" destination="Eca-WH-tRW" id="568-57-7KW"/>
             </connections>
-            <point key="canvasLocation" x="186.95652173913044" y="85.714285714285708"/>
+            <point key="canvasLocation" x="235" y="57"/>
         </tableViewCell>
     </objects>
     <resources>
