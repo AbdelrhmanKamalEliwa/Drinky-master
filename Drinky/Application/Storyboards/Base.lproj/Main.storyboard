@@ -1171,31 +1171,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tg4-Nj-6X1">
-                                <rect key="frame" x="0.0" y="268" width="414" height="545"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tg4-Nj-6X1">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="eqM-HG-lJW" id="33b-W1-RmL"/>
                                     <outlet property="delegate" destination="eqM-HG-lJW" id="3sg-NE-G9O"/>
                                 </connections>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.icloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jLM-Lc-KO0">
-                                <rect key="frame" x="107" y="109" width="200" height="126.5"/>
-                                <color key="tintColor" red="0.84313725490196079" green="0.48627450980392156" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="D3s-5i-zSQ"/>
-                                    <constraint firstAttribute="height" constant="130" id="f8Q-Nv-W0i"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="tg4-Nj-6X1" firstAttribute="top" secondItem="jLM-Lc-KO0" secondAttribute="bottom" constant="30" id="CNb-gr-Bu6"/>
+                            <constraint firstItem="tg4-Nj-6X1" firstAttribute="top" secondItem="tqD-ZX-D28" secondAttribute="top" id="C97-77-K19"/>
                             <constraint firstItem="tg4-Nj-6X1" firstAttribute="leading" secondItem="tqD-ZX-D28" secondAttribute="leading" id="DyB-OE-EQb"/>
                             <constraint firstItem="tqD-ZX-D28" firstAttribute="bottom" secondItem="tg4-Nj-6X1" secondAttribute="bottom" id="UZF-xl-aiS"/>
                             <constraint firstItem="tqD-ZX-D28" firstAttribute="trailing" secondItem="tg4-Nj-6X1" secondAttribute="trailing" id="ZiL-xL-eqq"/>
-                            <constraint firstItem="jLM-Lc-KO0" firstAttribute="centerX" secondItem="fgn-Ja-9jX" secondAttribute="centerX" id="aLJ-Ao-kxd"/>
-                            <constraint firstItem="jLM-Lc-KO0" firstAttribute="top" secondItem="tqD-ZX-D28" secondAttribute="top" constant="20" id="r9e-Xx-uad"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tqD-ZX-D28"/>
                     </view>
@@ -1474,7 +1464,6 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="person.icloud" catalog="system" width="128" height="88"/>
         <image name="sugar  1" width="24" height="24"/>
         <image name="sugar 0" width="24" height="24"/>
         <image name="sugar 3" width="96" height="96"/>
