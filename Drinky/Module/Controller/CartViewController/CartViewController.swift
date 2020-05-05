@@ -104,7 +104,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.displayData(
             orders[indexPath.row].drinkName, orders[indexPath.row].size,
             orders[indexPath.row].price, orders[indexPath.row].quantity,
-            orders[indexPath.row].drinkName)
+            orders[indexPath.row].drinkImage)
         return cell
     }
     

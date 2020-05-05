@@ -123,6 +123,10 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: Any) {
+//        guard size == "" else {
+//            presentSimpleAlert(viewController: self, title: "Failed", message: "Please select size")
+//            return
+//        }
         fetchOrder(size, String(suger), String(Int(stepper.value)), String(price * Int(stepper.value)))
         let alert = UIAlertController(title: "Success", message: "Your order added to Cart", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (_) in
