@@ -10,7 +10,7 @@ import UIKit
 
 class SliderImageViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var sliderImageCell: UIImageView!
+    @IBOutlet private weak var sliderImageCell: UIImageView!
     
     var imageCell: UIImage! {
         didSet {

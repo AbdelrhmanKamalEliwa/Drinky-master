@@ -11,13 +11,13 @@ import Firebase
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailSeparetorView: UIView!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var emailSeparetorView: UIView!
     
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var passwordSeparatorView: UIView!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
+    @IBOutlet private weak var passwordSeparatorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,12 @@ class LoginViewController: UIViewController {
         setupTextFieldsDelegate()
     }
     
-    func setupTextFieldsDelegate() {
+    private func setupTextFieldsDelegate() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
     
-    @IBAction func loginPressed(_ sender: Any) {
+    @IBAction private func loginPressed(_ sender: Any) {
         guard  !emailTextField.text!.isEmpty, !passwordTextField.text!.isEmpty
             else {
                 presentSimpleAlert(viewController: self, title: "Fileds are blank!", message: "All fileds must filled in!")
@@ -39,11 +39,11 @@ class LoginViewController: UIViewController {
         login()
     }
     
-    @IBAction func forgetPasswordPressed(_ sender: Any) {
+    @IBAction private func forgetPasswordPressed(_ sender: Any) {
     }
     
     
-    func login() {
+    private func login() {
         Auth.auth().signIn(withEmail: emailTextField.text! , password: passwordTextField.text!) {
             [weak self] (authResult, error) in
             guard let _ = authResult, error == nil else {
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func goToHomeVC() {
+    private func goToHomeVC() {
         performSegue(withIdentifier: "goToMain", sender: self)
     }
     
@@ -80,7 +80,7 @@ extension LoginViewController: UITextFieldDelegate {
         separator.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
     }
     
-    func resetDidEndEditValues() {
+    private func resetDidEndEditValues() {
         let resetColor = #colorLiteral(red: 0.7176470588, green: 0.7176470588, blue: 0.7176470588, alpha: 1)
         let isHidden = true
         emailSeparetorView.backgroundColor = resetColor

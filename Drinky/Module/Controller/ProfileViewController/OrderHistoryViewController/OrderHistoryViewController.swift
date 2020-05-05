@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class OrderHistoryViewController: UIViewController {
     
-    @IBOutlet weak var ordersTableView: UITableView!
+    @IBOutlet private weak var ordersTableView: UITableView!
     fileprivate let db = Firestore.firestore()
     fileprivate var orderHistory: [OrderHistoryModel] = []
     
@@ -22,12 +22,8 @@ class OrderHistoryViewController: UIViewController {
         registerOrderListCell()
         loadOrders()
     }
-    
-    func registerOrderListCell() {
-        let cellNib = UINib(nibName: "HistoryTableViewCell", bundle: nil)
-        ordersTableView.register(cellNib, forCellReuseIdentifier: "HistoryTableViewCell")
-    }
 }
+
 
 //MARK: - Table View Delegate and Data Source
 extension OrderHistoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -47,12 +43,17 @@ extension OrderHistoryViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    private func registerOrderListCell() {
+        let cellNib = UINib(nibName: "HistoryTableViewCell", bundle: nil)
+        ordersTableView.register(cellNib, forCellReuseIdentifier: "HistoryTableViewCell")
+    }
 }
 
 
 //MARK: - Firestore Methods
 extension OrderHistoryViewController {
-    func loadOrders() {
+    private func loadOrders() {
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return

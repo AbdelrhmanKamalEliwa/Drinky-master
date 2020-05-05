@@ -16,7 +16,7 @@ class FavoriteViewController: UIViewController {
     fileprivate var drinks: [DrinkModel] = []
     fileprivate var user: UserModel?
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +26,8 @@ class FavoriteViewController: UIViewController {
         registerTableView()
         getUserInfo()
         tableView.reloadData()
-        
-        // Do any additional setup after loading the view.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }
 
 
@@ -52,7 +39,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteTableCell", for: indexPath) as! FavoriteTableCell
-        cell.displayData(drinkName: drinks[indexPath.row].name, drinkImage: drinks[indexPath.row].image)
+        cell.displayData(drinks[indexPath.row])
         return cell
     }
     
@@ -63,7 +50,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(detailsViewController , animated: true)
     }
     
-    func registerTableView() {
+    private func registerTableView() {
         let nib = UINib(nibName: "FavoriteTableCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "FavoriteTableCell")
     }
@@ -88,7 +75,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Firestore Methods
 extension FavoriteViewController {
     
-    func getUserInfo() {
+    private func getUserInfo() {
 
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
@@ -126,10 +113,7 @@ extension FavoriteViewController {
         }
     }
 
-
-
-    func fetchFavoriteDrinks(_ favoriteDrinks: [String]?) {
-
+    private func fetchFavoriteDrinks(_ favoriteDrinks: [String]?) {
         guard let favoriteDrinks = favoriteDrinks else {
             print("can't load user")
             return
@@ -161,7 +145,7 @@ extension FavoriteViewController {
         }
     }
     
-    func removeFromFavorite(_ drinkId: String) {
+    private func removeFromFavorite(_ drinkId: String) {
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return

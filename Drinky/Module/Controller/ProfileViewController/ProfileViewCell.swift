@@ -14,12 +14,6 @@ class ProfileViewCell: UITableViewCell {
     @IBOutlet private weak var titleIconImage: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     
-    var title: String! {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-    
     func displayData(_ title: String, _ image: String) {
         titleLabel.text = title
         titleIconImage.image = UIImage(systemName: image)

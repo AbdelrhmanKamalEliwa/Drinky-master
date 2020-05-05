@@ -11,14 +11,14 @@ import Firebase
 
 class DetailsViewController: UIViewController {
     
-    @IBOutlet weak var cupImage: UIImageView!
-    @IBOutlet weak var drinkName: UILabel!
-    @IBOutlet weak var drinkPrice: UILabel!
-    @IBOutlet weak var stepper: UIStepper!
-    @IBOutlet weak var stepperCounter: UILabel!
-    @IBOutlet weak var totalPrice: UILabel!
-    @IBOutlet weak var drinkDescription: UILabel!
-    @IBOutlet weak var addToFavoriteButton: UIButton!
+    @IBOutlet private weak var cupImage: UIImageView!
+    @IBOutlet private weak var drinkName: UILabel!
+    @IBOutlet private weak var drinkPrice: UILabel!
+    @IBOutlet private weak var stepper: UIStepper!
+    @IBOutlet private weak var stepperCounter: UILabel!
+    @IBOutlet private weak var totalPrice: UILabel!
+    @IBOutlet private weak var drinkDescription: UILabel!
+    @IBOutlet private weak var addToFavoriteButton: UIButton!
     
     fileprivate let db = Firestore.firestore()
     fileprivate var drink: DrinkModel?
@@ -103,16 +103,16 @@ class DetailsViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func stepperAction(_ sender: Any) {
+    @IBAction private func stepperAction(_ sender: Any) {
         stepperCounter.text = String(Int(stepper.value))
         displayTotalPrice()
     }
     
-    func displayTotalPrice() {
+    private func displayTotalPrice() {
         totalPrice.text = "\(price * Int(stepper.value)) EGP"
     }
     
-    @IBAction func addToFavoriteTapped(_ sender: UIButton) {
+    @IBAction private func addToFavoriteTapped(_ sender: UIButton) {
         if sender.tintColor == .red {
             sender.tintColor = #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5764705882, alpha: 1)
             removeFromFavorite()
@@ -123,7 +123,7 @@ class DetailsViewController: UIViewController {
         
     }
     
-    @IBAction func addToCartPressed(_ sender: Any) {
+    @IBAction private func addToCartPressed(_ sender: Any) {
 //        guard size == "" else {
 //            presentSimpleAlert(viewController: self, title: "Failed", message: "Please select size")
 //            return
@@ -137,15 +137,20 @@ class DetailsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func displayData(_ drinkImage: String?, _ name: String, _ description: String, _ price: [Int]) {
+    private func displayData(_ drinkImage: String?, _ name: String, _ description: String, _ price: [Int]) {
         cupImage.layer.cornerRadius = 10
         cupImage.image = UIImage(named: drinkImage ?? "")
         drinkName.text = name
         drinkDescription.text = description
         drinkPrice.text = "\(price[0]) EGP"
     }
-    
-    func getDrink(drindId: String) {
+ 
+}
+
+
+//MARK: - Firestrore Methods
+extension DetailsViewController {
+    private func getDrink(drindId: String) {
         db.collection("drinks").whereField("id", isEqualTo: drindId).getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -175,8 +180,7 @@ class DetailsViewController: UIViewController {
         }
     }
     
-    
-    func fetchOrder(_ size: String, _ suger: String, _ quantity: String, _ totalprice: String) {
+    private func fetchOrder(_ size: String, _ suger: String, _ quantity: String, _ totalprice: String) {
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return
@@ -208,48 +212,7 @@ class DetailsViewController: UIViewController {
     }
     
     
-    func addToFavorite() {
-        guard let currentUser = Auth.auth().currentUser else {
-            print("Faild to load current user")
-            return
-        }
-        let userId = currentUser.uid
-        
-        guard let drink = drink else {
-            print("Faild to load drink id")
-            return
-        }
-        
-        let newDocument = db.collection("registed-user").document(userId)
-        newDocument.updateData(["favorite-drink": FieldValue.arrayUnion([drink.id])])
-    }
-    
-    func removeFromFavorite() {
-        guard let currentUser = Auth.auth().currentUser else {
-            print("Faild to load current user")
-            return
-        }
-        let userId = currentUser.uid
-        
-        guard let drink = drink else {
-            print("Faild to load drink id")
-            return
-        }
-        
-        let newDocument = db.collection("registed-user").document(userId)
-        newDocument.updateData(["favorite-drink": FieldValue.arrayRemove([drink.id])])
-    }
-    
-    func checkForFavorite() {
-        guard let currentUser = Auth.auth().currentUser else {
-            print("Faild to load current user")
-            return
-        }
-        let userId = currentUser.uid
-        getFavoriteDrinks(userId: userId)
-    }
-    
-    func getFavoriteDrinks(userId: String) {
+    private func getFavoriteDrinks(userId: String) {
         db.collection("registed-user").whereField("id", isEqualTo: userId).getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -288,7 +251,45 @@ class DetailsViewController: UIViewController {
         }
     }
     
+    private func removeFromFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        guard let drink = drink else {
+            print("Faild to load drink id")
+            return
+        }
+        
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.updateData(["favorite-drink": FieldValue.arrayRemove([drink.id])])
+    }
+    
+    private func checkForFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        getFavoriteDrinks(userId: userId)
+    }
+    
+    private func addToFavorite() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Faild to load current user")
+            return
+        }
+        let userId = currentUser.uid
+        
+        guard let drink = drink else {
+            print("Faild to load drink id")
+            return
+        }
+        
+        let newDocument = db.collection("registed-user").document(userId)
+        newDocument.updateData(["favorite-drink": FieldValue.arrayUnion([drink.id])])
+    }
 }
-
-
 

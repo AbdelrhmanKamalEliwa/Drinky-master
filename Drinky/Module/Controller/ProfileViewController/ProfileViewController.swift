@@ -11,9 +11,9 @@ import Firebase
 import FirebaseAuth
 
 class ProfileViewController: UIViewController {
-    @IBOutlet weak var profileTableView: UITableView!
+    @IBOutlet private weak var profileTableView: UITableView!
     
-    var data = ProfileScreenManager.shared.getData()
+    private var data = ProfileScreenManager.shared.getData()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar(title: "")
@@ -68,7 +68,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func registerProfileTableView() {
+    private func registerProfileTableView() {
         let cellNib = UINib(nibName: "ProfileViewCell", bundle: nil)
         profileTableView.register(cellNib, forCellReuseIdentifier: "ProfileViewCell")
     }
@@ -77,7 +77,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Firebase Methods
 extension ProfileViewController {
-    func logout() {
+    private func logout() {
         do {
             try Auth.auth().signOut()
             self.dismiss(animated: true, completion: nil)

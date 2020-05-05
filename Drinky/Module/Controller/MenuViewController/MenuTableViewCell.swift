@@ -10,7 +10,7 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var backgroundHolderView: UIView!
+    @IBOutlet private weak var backgroundHolderView: UIView!
     @IBOutlet private weak var cupImage: UIImageView!
     @IBOutlet private weak var cupNameLabel: UILabel!
     
@@ -19,9 +19,8 @@ class MenuTableViewCell: UITableViewCell {
         backgroundHolderView.layer.cornerRadius = 10
     }
     
-    func displayData(drinkName: String, drinkImage: String?) {
-        cupNameLabel.text = drinkName
-        cupImage.image = UIImage(named: drinkImage ?? "error-image")
+    func displayData(drink: DrinkModel) {
+        cupNameLabel.text = drink.name
+        cupImage.image = UIImage(named: drink.image ?? "error-image")
     }
-    
 }

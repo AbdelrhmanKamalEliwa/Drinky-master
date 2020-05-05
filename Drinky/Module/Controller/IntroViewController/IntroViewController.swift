@@ -14,18 +14,18 @@ import FacebookLogin
 
 class IntroViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    @IBOutlet weak var imagesCollectionView: UICollectionView!
-    @IBOutlet weak var pagingDots: UIPageControl!
-    @IBOutlet weak var registerbutton: UIButton!
-    @IBOutlet weak var loginbutton: UIButton!
-    @IBOutlet weak var loginWithFacebookButton: UIButton!
+    private let db = Firestore.firestore()
+    @IBOutlet private weak var imagesCollectionView: UICollectionView!
+    @IBOutlet private weak var pagingDots: UIPageControl!
+    @IBOutlet private weak var registerbutton: UIButton!
+    @IBOutlet private weak var loginbutton: UIButton!
+    @IBOutlet private weak var loginWithFacebookButton: UIButton!
     
     
     
-    let images = [UIImage(named: "image- 1"), UIImage(named: "image- 2"), UIImage(named: "image- 3"), UIImage(named: "image- 4"), UIImage(named: "image- 5")]
-    var pageIndex = 0
-    var timer: Timer?
+    private let images = [UIImage(named: "image- 1"), UIImage(named: "image- 2"), UIImage(named: "image- 3"), UIImage(named: "image- 4"), UIImage(named: "image- 5")]
+    private var pageIndex = 0
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +37,12 @@ class IntroViewController: UIViewController {
         imagesScrollTimer()
     }
 
-    func registerCollectionCell() {
+    private func registerCollectionCell() {
         let nibCell = UINib(nibName: "SliderImageViewCell", bundle: nil)
         self.imagesCollectionView.register(nibCell, forCellWithReuseIdentifier: "SliderImageViewCell")
     }
     
-    func imagesScrollTimer() {
+    private func imagesScrollTimer() {
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     @objc func timerAction() {
@@ -50,25 +50,25 @@ class IntroViewController: UIViewController {
         imagesCollectionView.scrollToItem(at: IndexPath(item: scrollPosition, section: 0), at: .centeredHorizontally, animated: true)
     }
     
-    @IBAction func registerPressed(_ sender: Any) {
+    @IBAction private func registerPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let registerViewController = storyboard.instantiateViewController(identifier: "RegisterViewController") as RegisterViewController
         registerViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
     
-    @IBAction func loginPressed(_ sender: Any) {
+    @IBAction private func loginPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as LoginViewController
         loginViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(loginViewController, animated: true)
     }
     
-    @IBAction func loginFacebookPressed(_ sender: Any) {
+    @IBAction private func loginFacebookPressed(_ sender: Any) {
         loginWithFacebook()
     }
     
-    func loginWithFacebook() {
+    private func loginWithFacebook() {
         let loginManager = LoginManager()
         
         loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) {
@@ -84,7 +84,7 @@ class IntroViewController: UIViewController {
         }
     }
     
-    func loginToFirestore() {
+    private func loginToFirestore() {
         guard let token = AccessToken.current?.tokenString else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
         Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
@@ -98,7 +98,7 @@ class IntroViewController: UIViewController {
     }
     
     
-    func getFBUserData() {
+    private func getFBUserData() {
         guard AccessToken.current != nil else {
             presentSimpleAlert(viewController: self, title: "Error", message: "Login Failure")
             return
@@ -125,7 +125,7 @@ class IntroViewController: UIViewController {
         
     }
     
-    func createUserInfo(_ userId: String, _ firstName: String, _ lastName: String, _ email: String) {
+    private func createUserInfo(_ userId: String, _ firstName: String, _ lastName: String, _ email: String) {
         let newDocument = db.collection("registed-user").document(userId)
         newDocument.setData([
             "first-name":firstName,
@@ -136,7 +136,7 @@ class IntroViewController: UIViewController {
         ])
     }
     
-    func goToHome() {
+    private func goToHome() {
         performSegue(withIdentifier: "goToHomeWithFB", sender: self)
     }
 
@@ -149,7 +149,7 @@ extension IntroViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderImageViewCell", for: indexPath) as! SliderImageViewCell
-        cell.sliderImageCell.image = images[indexPath.item]
+        cell.imageCell = images[indexPath.item]
         return cell
     }
     

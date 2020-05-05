@@ -11,11 +11,11 @@ import Firebase
 
 class MenuViewController: UIViewController {
 
-    @IBOutlet weak var menuTableViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var categoriesSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var menuSearchBar: UISearchBar!
-    @IBOutlet weak var menuTableView: UITableView!
-    @IBOutlet var backgroundView: UIView!
+    @IBOutlet private weak var menuTableViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var categoriesSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var menuSearchBar: UISearchBar!
+    @IBOutlet private weak var menuTableView: UITableView!
+    @IBOutlet private var backgroundView: UIView!
     
     fileprivate var selectedSegment = 0
     
@@ -29,7 +29,6 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tabBarController?.title = "Menu"
         registerMenuTableView()
         categoriesSegmentedControl.selectedSegmentIndex = 0
         sutupSegmentControlAttributes()
@@ -40,10 +39,9 @@ class MenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Menu"
-//        self.tabBarController?.navigationItem.leftBarButtonItem = settingsButton //This is the IBOutlet variable that you previously added
     }
     
-    func loadData() {
+    private func loadData() {
         loadFreshDrinks()
         loadHotDrinks()
         loadSoftDrinks()
@@ -51,18 +49,18 @@ class MenuViewController: UIViewController {
         menuTableView.reloadData()
     }
     
-    func registerMenuTableView() {
+    private func registerMenuTableView() {
         let menuNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         menuTableView.register(menuNib, forCellReuseIdentifier: "MenuTableViewCell")
     }
     
-    func setupSearchBar() {
+    private func setupSearchBar() {
         menuSearchBar.searchBarStyle = .minimal
         menuSearchBar.searchTextField.delegate = self
         menuSearchBar.delegate = self
     }
     
-    @IBAction func handleSelectedSegmentControl(_ sender: Any) {
+    @IBAction private func handleSelectedSegmentControl(_ sender: Any) {
         switch categoriesSegmentedControl.selectedSegmentIndex {
         case 0: selectedSegment = 0
         case 1: selectedSegment = 1
@@ -73,14 +71,14 @@ class MenuViewController: UIViewController {
         menuTableView.reloadData()
     }
     
-    func sutupSegmentControlAttributes() {
+    private func sutupSegmentControlAttributes() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
         let selectedTextAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
         categoriesSegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
         categoriesSegmentedControl.setTitleTextAttributes(selectedTextAttribute, for: .selected)
     }
     
-    func numberOfRowsOfTableView() -> Int {
+    private func numberOfRowsOfTableView() -> Int {
         if selectedSegment == 0 {
             return freshDrinks.count
         } else if selectedSegment == 1 {
@@ -107,26 +105,19 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
         if searching {
-            cell.displayData(drinkName: filteredDrinks[indexPath.row].name,
-                             drinkImage: filteredDrinks[indexPath.row].image)
+            cell.displayData(drink: filteredDrinks[indexPath.row])
             return cell
-            
+
         } else {
-            
             if selectedSegment == 0 {
-                cell.displayData(drinkName: freshDrinks[indexPath.row].name,
-                                 drinkImage: freshDrinks[indexPath.row].image)
+                cell.displayData(drink: filteredDrinks[indexPath.row])
             } else if selectedSegment == 1 {
-                cell.displayData(drinkName: hotDrinks[indexPath.row].name,
-                                 drinkImage: hotDrinks[indexPath.row].image)
+                cell.displayData(drink: filteredDrinks[indexPath.row])
             } else if selectedSegment == 2 {
-                cell.displayData(drinkName: softDrinks[indexPath.row].name,
-                                 drinkImage: softDrinks[indexPath.row].image)
+                cell.displayData(drink: filteredDrinks[indexPath.row])
             } else if selectedSegment == 3 {
-                cell.displayData(drinkName: waterDrinks[indexPath.row].name,
-                                 drinkImage: waterDrinks[indexPath.row].image)
+                cell.displayData(drink: filteredDrinks[indexPath.row])
             }
-            
             return cell
         }
     }
@@ -194,7 +185,7 @@ extension MenuViewController: UITextFieldDelegate {
 //MARK: - Firestore Methods
 extension MenuViewController {
     
-    func loadFreshDrinks() {
+    private func loadFreshDrinks() {
         db.collection("drinks").whereField("type", isEqualTo: "fresh-drink").getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -220,7 +211,7 @@ extension MenuViewController {
         }
     }
     
-    func loadHotDrinks() {
+    private func loadHotDrinks() {
         db.collection("drinks").whereField("type", isEqualTo: "hot-drink").getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -246,7 +237,7 @@ extension MenuViewController {
         }
     }
     
-    func loadSoftDrinks() {
+    private func loadSoftDrinks() {
         db.collection("drinks").whereField("type", isEqualTo: "soft-drink").getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -272,7 +263,7 @@ extension MenuViewController {
         }
     }
     
-    func loadWaterDrinks() {
+    private func loadWaterDrinks() {
         db.collection("drinks").whereField("type", isEqualTo: "water-drink").getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -298,7 +289,7 @@ extension MenuViewController {
         }
     }
     
-    func searchOnDrink(drink: String) {
+    private func searchOnDrink(drink: String) {
 //        db.collection("drinks").whereField(
 //        let myPredicate = NSPredicate(format: "name contains[c] '\(drink)'")
         db.collection("drinks")

@@ -12,11 +12,11 @@ import FirebaseAuth
 
 class AccountInfoViewController: UIViewController {
 
-    @IBOutlet weak var holderBackgroundView: UIView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet private weak var holderBackgroundView: UIView!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var phoneNumberLabel: UILabel!
     
     fileprivate let db = Firestore.firestore()
     fileprivate var user: UserModel?
@@ -28,18 +28,18 @@ class AccountInfoViewController: UIViewController {
         getUserInfo()
     }
     
-    func displayData(_ fullName: String, _ email: String, _ address: String, _ phoneNumber: String) {
-        userNameLabel.text = fullName
-        emailLabel.text = email
-        addressLabel.text = address
-        phoneNumberLabel.text = phoneNumber
+    private func displayData(_ user: UserModel) {
+        userNameLabel.text = "\(user.firstName) \(user.lastName)"
+        emailLabel.text = user.email
+        addressLabel.text = user.address ?? "There is no address"
+        phoneNumberLabel.text = user.mobileNumber
     }
 }
 
 //MARK: - Firestore Methods
 extension AccountInfoViewController {
     
-    func getUserInfo() {
+    private func getUserInfo() {
         
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
@@ -69,8 +69,8 @@ extension AccountInfoViewController {
                 print("can't load user info")
                 return
             }
-            let fullName = user.firstName + " " + user.lastName
-            self?.displayData(fullName, user.email, user.address ?? "Address not founded", user.mobileNumber)
+            
+            self?.displayData(user)
             
         }
     }

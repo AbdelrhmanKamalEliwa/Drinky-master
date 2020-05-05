@@ -13,12 +13,12 @@ class OrderListTableCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var sizeLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
-    
-    func displayData(_ name: String, _ size: String, _ price: String, _ quantity: String) {
-        nameLabel.text = name
-        sizeLabel.text = size
-        priceLabel.text = price
-        quantityLabel.text = quantity
+        
+    func displayData(_ order: OrderModel) {
+        nameLabel.text = order.drinkName
+        sizeLabel.text = order.size
+        priceLabel.text = order.price
+        quantityLabel.text = order.quantity
     }
     
     override func awakeFromNib() {

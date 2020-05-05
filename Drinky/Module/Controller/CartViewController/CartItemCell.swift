@@ -17,18 +17,12 @@ class CartItemCell: UITableViewCell {
     @IBOutlet private weak var sizeLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
-//    var name: String! {
-//        didSet {
-//            cupNameLabel.text = name
-//        }
-//    }
-    
-    func displayData(_ name: String, _ size: String, _ price: String, _ quantity: String, _ image: String?) {
-        cupNameLabel.text = name
-        sizeLabel.text = size
-        priceLabel.text = price
-        quantityLabel.text = quantity
-        cupImage.image = UIImage(named: image ?? "error-image")
+    func displayData(_ order: OrderModel) {
+        cupNameLabel.text = order.drinkName
+        sizeLabel.text = order.size
+        priceLabel.text = order.price
+        quantityLabel.text = order.quantity
+        cupImage.image = UIImage(named: order.drinkImage ?? "error-image")
     }
     
     override func awakeFromNib() {

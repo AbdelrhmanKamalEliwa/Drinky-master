@@ -11,31 +11,31 @@ import Firebase
 import FirebaseAuth
 
 class RegisterViewController: UIViewController {
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
     
-    @IBOutlet weak var fristNameTextField: UITextField!
-    @IBOutlet weak var fristNameLabel: UILabel!
-    @IBOutlet weak var fristNameSeparatorView: UIView!
+    @IBOutlet private weak var fristNameTextField: UITextField!
+    @IBOutlet private weak var fristNameLabel: UILabel!
+    @IBOutlet private weak var fristNameSeparatorView: UIView!
     
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var lastNameSeparatorView: UIView!
+    @IBOutlet private weak var lastNameTextField: UITextField!
+    @IBOutlet private weak var lastNameLabel: UILabel!
+    @IBOutlet private weak var lastNameSeparatorView: UIView!
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailSeparatorView: UIView!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var emailSeparatorView: UIView!
     
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var passwordSeparatorView: UIView!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
+    @IBOutlet private weak var passwordSeparatorView: UIView!
     
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var phoneNumberSeparatorView: UIView!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var phoneNumberLabel: UILabel!
+    @IBOutlet private weak var phoneNumberSeparatorView: UIView!
     
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var addressSeparatorView: UIView!
+    @IBOutlet private weak var addressTextField: UITextField!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var addressSeparatorView: UIView!
     
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class RegisterViewController: UIViewController {
         setupTextFieldsDelegate()
     }
     
-    func setupTextFieldsDelegate() {
+    private func setupTextFieldsDelegate() {
         fristNameTextField.delegate = self
         lastNameTextField.delegate = self
         emailTextField.delegate = self
@@ -53,7 +53,7 @@ class RegisterViewController: UIViewController {
         addressTextField.delegate = self
     }
     
-    @IBAction func registerPressed(_ sender: Any) {
+    @IBAction private func registerPressed(_ sender: Any) {
         guard !fristNameTextField.text!.isEmpty else {
             presentSimpleAlert(viewController: self, title: "Register Failure",
                                message: "First name required!")
@@ -85,7 +85,7 @@ class RegisterViewController: UIViewController {
     }
     
     
-    func registration() {
+    private func registration() {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) {
             [weak self] (authResult, error) in
             guard let _ = authResult?.user, error == nil else {
@@ -103,11 +103,11 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    func goToHomeVC() {
+    private func goToHomeVC() {
         performSegue(withIdentifier: "goToMainApp", sender: self)
     }
     
-    func createUserInfo(_ userId: String) {
+    private func createUserInfo(_ userId: String) {
         let newDocument = db.collection("registed-user").document(userId)
         newDocument.setData([
             "first-name":fristNameTextField.text!,
@@ -146,7 +146,7 @@ extension RegisterViewController: UITextFieldDelegate {
         separator.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1294117647, blue: 0.1411764706, alpha: 1)
     }
     
-    func resetDidEndEditValues() {
+    private func resetDidEndEditValues() {
         let resetColor = #colorLiteral(red: 0.7176470588, green: 0.7176470588, blue: 0.7176470588, alpha: 1)
         let isHidden = true
         fristNameSeparatorView.backgroundColor = resetColor

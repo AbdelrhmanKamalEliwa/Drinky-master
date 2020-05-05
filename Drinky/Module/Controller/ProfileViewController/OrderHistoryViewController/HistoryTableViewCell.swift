@@ -25,21 +25,12 @@ class HistoryTableViewCell: UITableViewCell {
         }
     }
     
-    var orderList = ["Ahmed", "Mohamed", "eliwa", "Adel"]
     override func awakeFromNib() {
         super.awakeFromNib()
         holderBackgroundView.layer.cornerRadius = 10
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
         registerOrderListCell()
-        
-//        print(ordersId)
-    }
-    
-    
-    func registerOrderListCell() {
-        let CellNib = UINib(nibName: "OrderListTableCell", bundle: nil)
-        orderListTableView.register(CellNib, forCellReuseIdentifier: "OrderListTableCell")
     }
     
     func fillOrdersData(_ data: [String]) {
@@ -48,7 +39,7 @@ class HistoryTableViewCell: UITableViewCell {
         orderListTableView.reloadData()
     }
     
-    @IBAction func showAndHideOrderDetails(_ sender: UIButton) {
+    @IBAction private func showAndHideOrderDetails(_ sender: UIButton) {
         if orderListTableView.isHidden {
             sender.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             orderListTableView.isHidden = false
@@ -59,7 +50,6 @@ class HistoryTableViewCell: UITableViewCell {
             orderListTableView.reloadData()
         }
     }
-    
     
 }
 
@@ -72,9 +62,13 @@ extension HistoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListTableCell", for: indexPath) as! OrderListTableCell
-        cell.displayData(orders[indexPath.row].drinkName, orders[indexPath.row].size,
-                         orders[indexPath.row].price, orders[indexPath.row].quantity)
+        cell.displayData(orders[indexPath.row])
         return cell
+    }
+    
+    private func registerOrderListCell() {
+        let CellNib = UINib(nibName: "OrderListTableCell", bundle: nil)
+        orderListTableView.register(CellNib, forCellReuseIdentifier: "OrderListTableCell")
     }
 }
 
@@ -82,13 +76,13 @@ extension HistoryTableViewCell: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Firestore Methods
 extension HistoryTableViewCell {
     
-    func loadOrderHistoryData() {
+    private func loadOrderHistoryData() {
         for orderId in ordersId {
             loadOrdersData(orderId)
         }
     }
     
-    func loadOrdersData(_ orderId: String) {
+    private func loadOrdersData(_ orderId: String) {
         db.collection("orders")
             .whereField("order-id", isEqualTo: orderId)
             .whereField("is-checked-out", isEqualTo: true)
@@ -105,7 +99,7 @@ extension HistoryTableViewCell {
                             orderId: data["order-id"] as! String,
                             userId: data["user-id"] as! String,
                             drinkName: data["drink-name"] as! String,
-                            drinkImage: data["drink-image"] as! String,
+                            drinkImage: data["drink-image"] as? String,
                             size: data["size"] as! String,
                             suger: data["suger"] as! String,
                             quantity: data["quantity"] as! String,

@@ -10,22 +10,22 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
 
-    @IBOutlet weak var holderBackgroundView: UIView!
+    @IBOutlet private weak var holderBackgroundView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCloseTouch()
     }
     
-    func setupCloseTouch() {
+    private func setupCloseTouch() {
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AboutUsViewController.closeTab(_:)))
         holderBackgroundView.addGestureRecognizer(closeTouch)
     }
     
-    @objc func closeTab(_ recognizer: UITapGestureRecognizer) {
+    @objc private func closeTab(_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func gotItPressed(_ sender: Any) {
+    @IBAction private func gotItPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     

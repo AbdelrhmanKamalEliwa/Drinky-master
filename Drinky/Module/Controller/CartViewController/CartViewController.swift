@@ -12,12 +12,12 @@ import FirebaseAuth
 
 class CartViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var cartTableView: UITableView!
-    @IBOutlet weak var subTotalLabel: UILabel!
-    @IBOutlet weak var delivaryCostLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
-    let db = Firestore.firestore()
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var cartTableView: UITableView!
+    @IBOutlet private weak var subTotalLabel: UILabel!
+    @IBOutlet private weak var delivaryCostLabel: UILabel!
+    @IBOutlet private weak var totalLabel: UILabel!
+    fileprivate let db = Firestore.firestore()
     fileprivate var orders: [OrderModel] = []
     fileprivate var user: UserModel?
     fileprivate var delivery = 10
@@ -35,7 +35,7 @@ class CartViewController: UIViewController {
         loadOrders()
     }
     
-    func displayData() {
+    private func displayData() {
         if orders.count == 0 {
             delivery = 0
             let subTotal = calculateSubtotalTotalPrice()
@@ -53,12 +53,12 @@ class CartViewController: UIViewController {
         }
     }
     
-    func registerCartTableView() {
+    private func registerCartTableView() {
         let cellNib = UINib(nibName: "CartItemCell", bundle: nil)
         cartTableView.register(cellNib, forCellReuseIdentifier: "CartItemCell")
     }
     
-    @IBAction func checkOutPressed(_ sender: Any) {
+    @IBAction private func checkOutPressed(_ sender: Any) {
         if orders.count == 0 {
             presentSimpleAlert(viewController: self, title: "No Orders Founded", message: "You don't have any orders in your Cart yet")
         } else {
@@ -68,7 +68,7 @@ class CartViewController: UIViewController {
         
     }
     
-    func calculateSubtotalTotalPrice() -> Int {
+    private func calculateSubtotalTotalPrice() -> Int {
         var subTotal = 0
         for order in orders {
             subTotal += Int(order.price)!
@@ -76,13 +76,13 @@ class CartViewController: UIViewController {
         return subTotal
     }
     
-    func calculateTotalPrice() -> Int {
+    private func calculateTotalPrice() -> Int {
         var total = 0
         total = calculateSubtotalTotalPrice() + delivery
         return total
     }
     
-    func getOrdersId() -> [String] {
+    private func getOrdersId() -> [String] {
         var ordersId: [String] = []
         for order in orders {
             ordersId.append(order.orderId)
@@ -101,10 +101,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartItemCell", for: indexPath) as! CartItemCell
-        cell.displayData(
-            orders[indexPath.row].drinkName, orders[indexPath.row].size,
-            orders[indexPath.row].price, orders[indexPath.row].quantity,
-            orders[indexPath.row].drinkImage)
+        cell.displayData(orders[indexPath.row])
         return cell
     }
     
@@ -138,7 +135,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Firestore Methods
 extension CartViewController {
     
-    func loadOrders() {
+    private func loadOrders() {
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
             return
@@ -160,7 +157,7 @@ extension CartViewController {
                         orderId: data["order-id"] as! String,
                         userId: data["user-id"] as! String,
                         drinkName: data["drink-name"] as! String,
-                        drinkImage: data["drink-image"] as! String,
+                        drinkImage: data["drink-image"] as? String,
                         size: data["size"] as! String,
                         suger: data["suger"] as! String,
                         quantity: data["quantity"] as! String,
@@ -175,7 +172,7 @@ extension CartViewController {
         }
     }
     
-    func deleteOrder(_ orderId: String) {
+    private func deleteOrder(_ orderId: String) {
         db.collection("orders").document(orderId).delete { [weak self] (error) in
             if let error = error {
                 self?.presentSimpleAlert(viewController: self!, title: "Failure", message: error.localizedDescription)
@@ -185,7 +182,7 @@ extension CartViewController {
         }
     }
     
-    func updateOrdersAfterChecckOut() {
+    private func updateOrdersAfterChecckOut() {
         for order in orders {
             let newDocument = db.collection("orders").document(order.orderId)
             newDocument.updateData(["is-checked-out": true])
@@ -194,7 +191,7 @@ extension CartViewController {
     }
     
     
-    func fetchOrderHistory(_ address: String?) {
+    private func fetchOrderHistory(_ address: String?) {
         guard let address = address else {
             presentSimpleAlert(viewController: self, title: "Check out error", message: "Please enter your address")
             return
@@ -224,7 +221,7 @@ extension CartViewController {
         tableView.reloadData()
     }
     
-    func getUserInfo() {
+    private func getUserInfo() {
         
         guard let currentUser = Auth.auth().currentUser else {
             print("Faild to load current user")
