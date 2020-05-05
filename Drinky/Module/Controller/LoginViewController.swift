@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var emailSeparetorView: UIView!
-    @IBOutlet weak var logoimage: UIImageView!
     
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordLabel: UILabel!
@@ -28,8 +27,6 @@ class LoginViewController: UIViewController {
     func setupViewDisplay() {
         setupNavigationBar(title: "Login")
         setupTextFieldsDelegate()
-        logoimage.layer.masksToBounds = true
-        logoimage.layer.cornerRadius = logoimage.frame.height/2
     }
     
     private func setupTextFieldsDelegate() {

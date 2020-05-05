@@ -13,7 +13,6 @@ import FirebaseAuth
 class RegisterViewController: UIViewController {
     private let db = Firestore.firestore()
     
-    @IBOutlet private weak var logoImage: UIImageView!
     @IBOutlet private weak var fristNameTextField: UITextField!
     @IBOutlet private weak var fristNameLabel: UILabel!
     @IBOutlet private weak var fristNameSeparatorView: UIView!
@@ -47,8 +46,6 @@ class RegisterViewController: UIViewController {
     func setupScreenDisplay() {
         setupNavigationBar(title: "Register")
         setupTextFieldsDelegate()
-        logoImage.layer.masksToBounds = true
-        logoImage.layer.cornerRadius = logoImage.frame.height/2
     }
     
     private func setupTextFieldsDelegate() {
