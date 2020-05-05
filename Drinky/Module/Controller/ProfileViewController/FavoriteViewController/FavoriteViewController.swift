@@ -55,6 +55,13 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let detailsViewController = storyboard.instantiateViewController(identifier: "DetailsViewController") as! DetailsViewController
+        detailsViewController.drinkId = drinks[indexPath.row].id
+        self.navigationController?.pushViewController(detailsViewController , animated: true)
+    }
+    
     func registerTableView() {
         let nib = UINib(nibName: "FavoriteTableCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "FavoriteTableCell")
