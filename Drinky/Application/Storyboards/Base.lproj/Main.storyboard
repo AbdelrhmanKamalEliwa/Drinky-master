@@ -193,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-Ts-e4v">
-                                <rect key="frame" x="20" y="223" width="374" height="104"/>
+                                <rect key="frame" x="20" y="193" width="374" height="104"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="WId-wH-6yB">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="47"/>
@@ -258,7 +258,7 @@
                                 </subviews>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-z4-DII">
-                                <rect key="frame" x="28" y="327" width="122" height="30"/>
+                                <rect key="frame" x="28" y="297" width="122" height="30"/>
                                 <state key="normal" title="Forget password?">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -267,7 +267,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="150-Sx-lFL">
-                                <rect key="frame" x="28" y="397" width="358" height="50"/>
+                                <rect key="frame" x="28" y="367" width="358" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wuN-SV-j5g"/>
@@ -286,7 +286,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfF-eP-d4e">
-                                <rect key="frame" x="96.666666666666686" y="447" width="221" height="30"/>
+                                <rect key="frame" x="96.666666666666686" y="417" width="221" height="30"/>
                                 <state key="normal" title="Don't have an account? Register">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
@@ -294,18 +294,10 @@
                                     <segue destination="8nn-Ck-GFw" kind="show" id="nLl-Jw-csV"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkyLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="ssq-ou-Mpx">
-                                <rect key="frame" x="28" y="103" width="358" height="70"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="X1x-2q-Sjj"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="XRs-vN-vH8" secondAttribute="bottom" id="0ju-a5-Jp5"/>
-                            <constraint firstItem="dCe-Ts-e4v" firstAttribute="top" secondItem="ssq-ou-Mpx" secondAttribute="bottom" constant="50" id="9Q6-EB-hVr"/>
                             <constraint firstItem="dCe-Ts-e4v" firstAttribute="leading" secondItem="Dbg-EC-tQf" secondAttribute="leading" constant="20" id="AtR-qp-b8a"/>
                             <constraint firstItem="XRs-vN-vH8" firstAttribute="leading" secondItem="Dbg-EC-tQf" secondAttribute="leading" id="H3H-7c-bmz"/>
                             <constraint firstItem="150-Sx-lFL" firstAttribute="leading" secondItem="Dbg-EC-tQf" secondAttribute="leading" constant="28" id="HYA-0h-i5V"/>
@@ -318,11 +310,9 @@
                             <constraint firstItem="Dbg-EC-tQf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="INJ-z4-DII" secondAttribute="trailing" symbolic="YES" id="XxD-RE-Bpe"/>
                             <constraint firstItem="VfF-eP-d4e" firstAttribute="centerX" secondItem="thX-Ok-llz" secondAttribute="centerX" id="Y2u-gq-AOv"/>
                             <constraint firstItem="150-Sx-lFL" firstAttribute="top" secondItem="dCe-Ts-e4v" secondAttribute="bottom" constant="70" id="caw-GM-bIX"/>
-                            <constraint firstItem="ssq-ou-Mpx" firstAttribute="leading" secondItem="Dbg-EC-tQf" secondAttribute="leading" constant="28" id="fh2-iF-6Tv"/>
-                            <constraint firstItem="Dbg-EC-tQf" firstAttribute="trailing" secondItem="ssq-ou-Mpx" secondAttribute="trailing" constant="28" id="gxz-ao-sP5"/>
+                            <constraint firstItem="dCe-Ts-e4v" firstAttribute="top" secondItem="sJE-ie-Spk" secondAttribute="bottom" constant="100" id="dFY-rt-iaB"/>
                             <constraint firstItem="INJ-z4-DII" firstAttribute="leading" secondItem="Dbg-EC-tQf" secondAttribute="leading" constant="28" id="iNX-MC-PFe"/>
                             <constraint firstItem="sJE-ie-Spk" firstAttribute="top" secondItem="Dbg-EC-tQf" secondAttribute="top" constant="10" id="n1X-fC-I8j"/>
-                            <constraint firstItem="ssq-ou-Mpx" firstAttribute="top" secondItem="sJE-ie-Spk" secondAttribute="bottom" constant="10" id="nNP-NC-ve3"/>
                             <constraint firstItem="VfF-eP-d4e" firstAttribute="top" secondItem="150-Sx-lFL" secondAttribute="bottom" id="ng1-9G-4j9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dbg-EC-tQf"/>
@@ -332,7 +322,6 @@
                         <outlet property="emailLabel" destination="JVu-4p-qYc" id="9Yk-2H-JZO"/>
                         <outlet property="emailSeparetorView" destination="IKQ-xA-S8i" id="kBf-X0-hdt"/>
                         <outlet property="emailTextField" destination="ALX-iZ-0nZ" id="IqH-6F-vpa"/>
-                        <outlet property="logoimage" destination="ssq-ou-Mpx" id="7lp-PD-ETU"/>
                         <outlet property="passwordLabel" destination="x5I-vb-w48" id="L2A-Cc-2b5"/>
                         <outlet property="passwordSeparatorView" destination="74L-HK-hdi" id="SQg-gM-zT9"/>
                         <outlet property="passwordTextField" destination="CgQ-qy-SlQ" id="5DG-L4-hIJ"/>
@@ -355,7 +344,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PIg-Ag-zhz">
-                                <rect key="frame" x="20" y="154" width="374" height="382"/>
+                                <rect key="frame" x="20" y="107" width="374" height="382"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="4yn-MX-TSg">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="47"/>
@@ -540,7 +529,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iD-9x-BNP">
-                                <rect key="frame" x="28" y="566" width="358" height="50"/>
+                                <rect key="frame" x="28" y="519" width="358" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PDC-QP-ECM"/>
@@ -558,28 +547,18 @@
                                     <action selector="registerPressed:" destination="8nn-Ck-GFw" eventType="touchUpInside" id="MYV-vU-NlW"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkyLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-6f-d9B">
-                                <rect key="frame" x="28" y="64" width="358" height="70"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="2vb-t4-kOT"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6iD-9x-BNP" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="28" id="0F4-sk-h2f"/>
-                            <constraint firstItem="QNJ-6f-d9B" firstAttribute="top" secondItem="uWe-4h-vOy" secondAttribute="top" constant="20" id="4vC-Zb-LkN"/>
                             <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" secondItem="PIg-Ag-zhz" secondAttribute="trailing" constant="20" id="8yH-7w-hh8"/>
-                            <constraint firstItem="PIg-Ag-zhz" firstAttribute="top" secondItem="QNJ-6f-d9B" secondAttribute="bottom" constant="20" id="Bt8-Pw-eWd"/>
+                            <constraint firstItem="PIg-Ag-zhz" firstAttribute="centerY" secondItem="Cf1-1Y-J8c" secondAttribute="centerY" constant="-150" id="BHr-US-9xU"/>
                             <constraint firstAttribute="bottom" secondItem="22n-O8-A2p" secondAttribute="bottom" id="DfK-4w-ZcG"/>
                             <constraint firstItem="6iD-9x-BNP" firstAttribute="top" secondItem="PIg-Ag-zhz" secondAttribute="bottom" constant="30" id="Gg6-Cw-7mT"/>
-                            <constraint firstItem="QNJ-6f-d9B" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="28" id="MFi-Rt-Bo1"/>
                             <constraint firstItem="PIg-Ag-zhz" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" constant="20" id="QIL-Dr-YtD"/>
                             <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" secondItem="6iD-9x-BNP" secondAttribute="trailing" constant="28" id="gnr-lH-t2a"/>
                             <constraint firstItem="22n-O8-A2p" firstAttribute="leading" secondItem="uWe-4h-vOy" secondAttribute="leading" id="goq-4T-X04"/>
                             <constraint firstItem="22n-O8-A2p" firstAttribute="top" secondItem="Cf1-1Y-J8c" secondAttribute="top" id="haF-Ob-CQK"/>
-                            <constraint firstItem="uWe-4h-vOy" firstAttribute="trailing" secondItem="QNJ-6f-d9B" secondAttribute="trailing" constant="28" id="ogK-gl-G3E"/>
                             <constraint firstItem="22n-O8-A2p" firstAttribute="trailing" secondItem="uWe-4h-vOy" secondAttribute="trailing" id="u7x-T4-Osl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uWe-4h-vOy"/>
@@ -598,7 +577,6 @@
                         <outlet property="lastNameLabel" destination="6S9-2C-H90" id="oWv-Rw-OK9"/>
                         <outlet property="lastNameSeparatorView" destination="tdl-Fl-WBo" id="km8-MT-aPx"/>
                         <outlet property="lastNameTextField" destination="9iZ-o8-8eX" id="dhh-ah-hUd"/>
-                        <outlet property="logoImage" destination="QNJ-6f-d9B" id="Ctc-Ug-sGG"/>
                         <outlet property="passwordLabel" destination="es9-u8-qql" id="JuQ-Zs-iRF"/>
                         <outlet property="passwordSeparatorView" destination="q5r-a3-bQy" id="YYO-Kl-utM"/>
                         <outlet property="passwordTextField" destination="1NW-cB-b8G" id="bJg-c7-oVv"/>
@@ -930,7 +908,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-Rg-d5n">
                                 <rect key="frame" x="157" y="64" width="100" height="130"/>
-                                <color key="backgroundColor" red="0.61176470589999998" green="0.87450980389999999" blue="0.36862745099999999" alpha="0.8965913955" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="mzA-VE-HjR"/>
                                     <constraint firstAttribute="height" constant="130" id="pVR-Hi-KzH"/>
@@ -1472,7 +1450,6 @@
     <resources>
         <image name="CupSize0" width="512" height="512"/>
         <image name="DrinkyLogo" width="500" height="500"/>
-        <image name="DrinkyLogo-1" width="500" height="500"/>
         <image name="backgroundPattern- 2" width="1300" height="1292"/>
         <image name="cart.fill" catalog="system" width="64" height="50"/>
         <image name="facebook" width="800" height="1540"/>
