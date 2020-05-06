@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,34 +15,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPattern- 2" translatesAutoresizingMaskIntoConstraints="NO" id="hIf-Oq-NTT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPattern- 3" translatesAutoresizingMaskIntoConstraints="NO" id="0wg-pG-7Dv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-US-EKo">
-                                <rect key="frame" x="0.0" y="398" width="414" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="w8d-UC-je7"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPattern- 2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqs-4w-znL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DrinkyLogo-1" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-US-EKo">
+                                <rect key="frame" x="0.0" y="265" width="414" height="631"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't miss last sip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yp-ac-aaE">
-                                <rect key="frame" x="108" y="508" width="198.5" height="32.5"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="119.66666666666669" y="623.66666666666663" width="175" height="29"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                <color key="textColor" red="0.61176470589999998" green="0.87450980389999999" blue="0.36862745099999999" alpha="0.8965913955" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FEk-US-EKo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2aQ-V0-DwL"/>
-                            <constraint firstItem="hIf-Oq-NTT" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="6dO-HP-dT4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hIf-Oq-NTT" secondAttribute="trailing" id="BJx-ui-2wI"/>
-                            <constraint firstItem="hIf-Oq-NTT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DVx-Fk-xwn"/>
-                            <constraint firstItem="FEk-US-EKo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hmk-De-Prh"/>
-                            <constraint firstItem="6Yp-ac-aaE" firstAttribute="centerX" secondItem="FEk-US-EKo" secondAttribute="centerX" id="IKK-HY-yAi"/>
-                            <constraint firstItem="6Yp-ac-aaE" firstAttribute="top" secondItem="FEk-US-EKo" secondAttribute="bottom" constant="10" id="LV5-V1-xgE"/>
-                            <constraint firstItem="hIf-Oq-NTT" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gDB-et-iZF"/>
-                            <constraint firstItem="FEk-US-EKo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mAZ-Pa-ESw"/>
+                            <constraint firstItem="Kqs-4w-znL" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="0vQ-a4-tfI"/>
+                            <constraint firstItem="6Yp-ac-aaE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4R9-pc-hbu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kqs-4w-znL" secondAttribute="trailing" id="9mB-z1-AJ9"/>
+                            <constraint firstItem="0wg-pG-7Dv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DJz-gd-cnZ"/>
+                            <constraint firstItem="FEk-US-EKo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DMk-rQ-y1S"/>
+                            <constraint firstAttribute="bottom" secondItem="Kqs-4w-znL" secondAttribute="bottom" id="EoT-5W-T8e"/>
+                            <constraint firstItem="FEk-US-EKo" firstAttribute="height" secondItem="Kqs-4w-znL" secondAttribute="height" multiplier="0.704241" id="JfV-tT-1yw"/>
+                            <constraint firstItem="FEk-US-EKo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Oht-DP-67Y"/>
+                            <constraint firstAttribute="bottom" secondItem="FEk-US-EKo" secondAttribute="bottom" id="Wug-ow-izs"/>
+                            <constraint firstItem="6Yp-ac-aaE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="190" id="ivU-bO-rGC"/>
+                            <constraint firstItem="0wg-pG-7Dv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j9m-jP-GjJ"/>
+                            <constraint firstItem="0wg-pG-7Dv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kmj-tZ-BSy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0wg-pG-7Dv" secondAttribute="bottom" id="nim-Um-GwG"/>
+                            <constraint firstItem="Kqs-4w-znL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qWU-1K-z0A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -53,7 +58,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DrinkyLogo" width="500" height="500"/>
+        <image name="DrinkyLogo-1" width="500" height="500"/>
         <image name="backgroundPattern- 2" width="1300" height="1292"/>
+        <image name="backgroundPattern- 3" width="860" height="1060"/>
     </resources>
 </document>

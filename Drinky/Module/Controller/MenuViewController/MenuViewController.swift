@@ -25,6 +25,8 @@ class MenuViewController: UIViewController {
     fileprivate var hotDrinks: [DrinkModel] = []
     fileprivate var softDrinks: [DrinkModel] = []
     fileprivate var waterDrinks: [DrinkModel] = []
+    
+    fileprivate var allDrinks: [DrinkModel] = []
     fileprivate var filteredDrinks: [DrinkModel] = []
     
     override func viewDidLoad() {
@@ -34,6 +36,7 @@ class MenuViewController: UIViewController {
         sutupSegmentControlAttributes()
         setupSearchBar()
         loadData()
+        searchOnDrink()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -164,7 +167,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Search Bar Delegate
 extension MenuViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchOnDrink(drink: searchText)
+        filteredDrinks = allDrinks.filter { (drink) -> Bool in
+            drink.name.lowercased().contains(searchText.lowercased())}
         searching = true
         if searchText.isEmpty {
             searching = false
@@ -206,7 +210,6 @@ extension MenuViewController {
                 DispatchQueue.main.async {
                     self?.menuTableView.reloadData()
                 }
-                
             }
         }
     }
@@ -232,7 +235,6 @@ extension MenuViewController {
                 DispatchQueue.main.async {
                     self?.menuTableView.reloadData()
                 }
-                
             }
         }
     }
@@ -258,7 +260,6 @@ extension MenuViewController {
                 DispatchQueue.main.async {
                     self?.menuTableView.reloadData()
                 }
-                
             }
         }
     }
@@ -289,11 +290,10 @@ extension MenuViewController {
         }
     }
     
-    private func searchOnDrink(drink: String) {
-//        db.collection("drinks").whereField(
-//        let myPredicate = NSPredicate(format: "name contains[c] '\(drink)'")
+    private func searchOnDrink() {
+
         db.collection("drinks")
-            .whereField("name", isGreaterThanOrEqualTo: drink)
+//            .whereField("name", isGreaterThanOrEqualTo: drink)
             .getDocuments {
             [weak self] (snapshot, error) in
             if let error = error {
@@ -302,7 +302,7 @@ extension MenuViewController {
             if let snapshot = snapshot {
                 for document in snapshot.documents {
                     let data = document.data()
-                    self?.filteredDrinks.append(DrinkModel(
+                    self?.allDrinks.append(DrinkModel(
                         id: data["id"] as! String,
                         name: data["name"] as! String,
                         type: data["type"] as! String,
